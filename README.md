@@ -1,1 +1,1 @@
-# Mitra-Gadget-Elektronik
+# Mitra Gadget & Elektronik
