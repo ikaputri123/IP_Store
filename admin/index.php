@@ -44,7 +44,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="index.php" class="logo d-flex align-items-center">
         <img src="assets/img/user.jpg" alt="">
         <span class="d-none d-lg-block">IP_Store</span>
       </a>
@@ -169,7 +169,7 @@
             <div class="card info-card customers-card shadow-sm w-100">
               <div class="card-body text-center py-4">
                 <h4 class="mb-2">Selamat Datang di Website Admin
-                <stong>IP_Store!</strong></h4
+                <stong>IP_Store!</strong></h4>
               <p class="text-muted small mb-0">kelola produk, transaksi, dan pelanggan dengan mudah.</p>
           </div>
         </div>
@@ -185,7 +185,7 @@
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-cart"></i>
+                      <i class="bi bi-basket"></i>
                     </div>
                     <div class="ps-3">
                       <h6>145</h6>
@@ -218,11 +218,6 @@
            
           </div>
         </div><!-- End Left side columns -->
-
-        <!-- Right side columns -->
-        <div class="col-lg-4">
-        </div><!-- End Right side columns -->
-
       </div>
     </section>
 
