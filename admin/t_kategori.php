@@ -68,7 +68,7 @@ if (isset($_POST['simpan'])) {
 
 <div class="d-flex align-items-center justify-content-between">
   <a href="index.php" class="logo d-flex align-items-center">
-    <img src="assets/img/user.jpg" alt="">
+    <img src="assets/img/logo.jpg" alt="">
     <span class="d-none d-lg-block">IP_Store</span>
   </a>
   <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -195,7 +195,6 @@ if (isset($_POST['simpan'])) {
                   placeholder="Masukkan Nama Kategori Produk">
                 </div>
                 <div class="text-center">
-                  <button type="reset" class="btn btn-secondary">Reset</button>
                   <button type="submit" class="btn btn-primary" name="simpan">Simpan</button>
                 </div>
               </form>

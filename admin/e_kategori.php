@@ -60,12 +60,12 @@ if (isset($_POST['simpan'])) {
 </head>
 
 <body>
-<  <!-- ======= Header ======= -->
+< <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.php" class="logo d-flex align-items-center">
-        <img src="assets/img/user.jpg" alt="">
+        <img src="assets/img/logo.jpg" alt="">
         <span class="d-none d-lg-block">IP_Store</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -107,6 +107,7 @@ if (isset($_POST['simpan'])) {
     </nav><!-- End Icons Navigation -->
 
   </header><!-- End Header -->
+
     <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
 
