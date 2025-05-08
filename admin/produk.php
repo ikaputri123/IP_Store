@@ -221,9 +221,8 @@
                                             <tr>
                                                 <td><?php echo $no++; ?></td>
                                                 <td><?php echo $hasil['nm_produk']; ?></td>
-                                                <td>
-                                                    <Rp <?php echo number_format($hasil['harga'], 0, ',', ','); ?></td>
-                                                <td><?php echo $hasil['stock']; ?></td>
+                                                <td> Rp <?php echo number_format($hasil['harga'], 0, ',', ','); ?></td>
+                                                <td><?php echo $hasil['stok']; ?></td>
                                                 <td><?php echo $hasil['desk']; ?></td>
                                                 <td><?php echo $hasil['nm_kategori']; ?></td>
                                                 <td>
@@ -237,7 +236,7 @@
                                                         <i class="bi bi-pencil-square"></i>
                                                     </a>
                                                     <a href="h_produk.php?id=<?php echo $hasil['id_produk']; ?>" class="btn btn-danger" onclick="return confirm(" Apakah Anda Yakin Ingin Menghapus Data?')">
-                                                        <i class="bi bi-trash"></id>
+                                                        <i class="bi bi-trash"></i>
                                                     </a>
                                                 </td>
                                             </tr>

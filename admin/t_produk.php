@@ -1,3 +1,50 @@
+<?php
+include "koneksi.php";
+
+//mendapatkan kode produk otomatis
+$auto = mysqli_query($koneksi, "SELECT MAX(id_produk) AS max_code FROM tb_produk");
+$hasil = mysqli_fetch_array($auto);
+$code = $hasil['max_code'];
+$urutan = (int)substr($code, 1, 3);
+$urutan++;
+$huruf = "P";
+$id_produk = $huruf . sprintf("%03s", $urutan);
+
+if (isset($_POST['simpan'])) {
+    $nm_produk = $_POST['nm_produk'];
+    $harga = $_POST['harga'];
+    $stok = $_POST['stok'];
+    $desk  = $_POST['desk'];
+    $id_kategori = $_POST['id_kategori'];
+
+    //upload gambar
+    $imgfile = $_FILES['gambar']['name'];
+    $tmp_file = $_FILES['gambar']['tmp_name'];
+    $extension = strtolower(pathinfo($imgfile, PATHINFO_EXTENSION));
+
+    $dir = "produk_img/"; //Direktori penyimpanan gambar
+    $allowed_extension = array("jpg", "jpeg", "png", "webp");
+
+    if (!in_array($extension, $allowed_extension)) {
+        echo "<script>alert('format tidak valid. hanya jpg, jpeg, png, dan webp yang diperbolehkan.');</script>";
+    } else {
+        //rename file gambar agar unik 
+        $imgnewfile = md5(time(). $imgfile) . "." . $extension;
+        move_uploaded_file($tmp_file, $dir . $imgnewfile);
+
+        //simpan data ke database
+        $query  = mysqli_query($koneksi, "INSERT INTO tb_produk (id_produk, nm_produk, harga, stok, desk, id_kategori, gambar) VALUES  ('$id_produk', '$nm_produk', '$harga', '$stok', '$desk', '$id_kategori', '$imgnewfile')");
+
+        if ($query) {
+            echo "<script>alert('produk  berhasil ditambahkan!');</script>";
+            header("refresh:0, produk.php");
+        } else {
+            echo "<script>alert('gagal menambahkan produk!');</script>";
+            header("refresh:0, produk.php");
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -81,62 +128,62 @@
     </header><!-- End Header -->
 
    
-    <!-- ======= Sidebar ======= -->
-    <aside id="sidebar" class="sidebar">
+     <!-- ======= Sidebar ======= -->
+     <aside id="sidebar" class="sidebar">
 
-        <ul class="sidebar-nav" id="sidebar-nav">
+<ul class="sidebar-nav" id="sidebar-nav">
 
-            <li class="nav-item">
-                <a class="nav-link " href="index.php">
-                    <i class="bi bi-house-door"></i>
-                    <span>Beranda</span>
-                </a>
-            </li><!-- End Dashboard Nav -->
+    <li class="nav-item">
+        <a class="nav-link " href="index.php">
+            <i class="bi bi-house-door"></i>
+            <span>Beranda</span>
+        </a>
+    </li><!-- End Dashboard Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="kategori.php">
-                    <i class="bi bi-handbag"></i>
-                    <span>Kategori</span>
-                </a>
-            </li><!-- End Kategori Page Nav -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="kategori.php">
+            <i class="bi bi-handbag"></i>
+            <span>Kategori</span>
+        </a>
+    </li><!-- End Kategori Page Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="produk.php">
-                    <i class="bi bi-box-seam-fill"></i>
-                    <span>Produk</span>
-                </a>
-            </li><!-- End Produk Page Nav -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="produk.php">
+            <i class="bi bi-box-seam-fill"></i>
+            <span>Produk</span>
+        </a>
+    </li><!-- End Produk Page Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="keranjang.php">
-                    <i class="bi bi-cart4"></i>
-                    <span>Keranjang</span>
-                </a>
-            </li><!-- End Keranjang Page Nav -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="keranjang.php">
+            <i class="bi bi-cart4"></i>
+            <span>Keranjang</span>
+        </a>
+    </li><!-- End Keranjang Page Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="transaksi.php">
-                    <i class="bi bi-credit-card"></i>
-                    <span>Transaksi</span>
-                </a>
-            </li><!-- End Transaksi Page Nav -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="transaksi.php">
+            <i class="bi bi-credit-card"></i>
+            <span>Transaksi</span>
+        </a>
+    </li><!-- End Transaksi Page Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="laporan.php">
-                    <i class="bi bi-journal-text"></i>
-                    <span>Laporan</span>
-                </a>
-            </li><!-- End Laporan Page Nav -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="laporan.php">
+            <i class="bi bi-journal-text"></i>
+            <span>Laporan</span>
+        </a>
+    </li><!-- End Laporan Page Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="penguuna.php">
-                    <i class="bi bi-person-fill"></i>
-                    <span>Pengguna</span>
-                </a>
-            </li><!-- End Pengguna Page Nav -->
-        </ul>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="penguuna.php">
+            <i class="bi bi-person-fill"></i>
+            <span>Pengguna</span>
+        </a>
+    </li><!-- End Pengguna Page Nav -->
+</ul>
 
-    </aside><!-- End Sidebar-->
+</aside><!-- End Sidebar-->
     <main id="main" class="main">
 
         <div class="pagetitle">
@@ -178,6 +225,13 @@
                                     <label for="id_kategori" class="form-label">Kategori</label>
                                     <select class="form-control" id="id_kategori" name="id_kategori" required>
                                         <option value="">-- Pilih Kategori --</option>
+                                        <?php
+                                        include "koneksi.php";
+                                        $query = mysqli_query($koneksi, "SELECT * FROM tb_kategori");
+                                        while ($kategori = mysqli_fetch_array($query)) {
+                                            echo "<option value='{$kategori['id_kategori']}'>{$kategori['nm_kategori']}</option>";
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="col-12">
@@ -205,10 +259,14 @@
             &copy; Copyright <strong><span>IP_Store</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Designed by <a href="link ig">Ika Putri</a>
+            <!-- All the links in the footer should remain intact. -->
+            <!-- You can delete the links only if you purchased the pro version. -->
+            <!-- Licensing information: https://bootstrapmade.com/license/ -->
+            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+            Designed by <a href="https://www.instagram.com/ya.putri_?igsh=azk4dHlwYmNpZGs="
+                target="_blank">IkaPutri</a>
         </div>
     </footer><!-- End Footer -->
-
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
