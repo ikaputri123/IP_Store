@@ -1,3 +1,52 @@
+<?php
+include "koneksi.php";
+
+//pastikan ada ID produk yang dikirimkan
+if (isset($_GET['id'])) {
+  $id_produk = $_GET['id'];
+
+  //ambil data produk berdasarkan ID
+  $query = mysqli_query($koneksi, "SELECT * FROM tb_produk WHERE id_produk = '$id_produk'");
+  $data = mysqli_fetch_array($query);
+}
+
+//jika tombol update ditekan
+if (isset($_POST['update'])) {
+  $nm_produk = $_POST['nm_produk'];
+  $harga = $_POST['harga'];
+  $stok = $_POST['stok'];
+  $desk  = $_POST['desk'];
+  $id_kategori  = $_POST['id_kategori'];
+  $gambar_lama = $_POST['gambar_lama'];
+  
+  //cek apakah ada gambar baru yang diupload
+  if ($_FILES['gambar']['name'] != "") {
+    $imgfile = $_FILES['gambar']['name'];
+    $tmp_file = $_FILES['gambar']['tmp_name'];
+    $extension = strtolower(pathinfo($imgfile, PATHINFO_EXTENSION));
+    $dir = "produk_img/";
+    $allowed_extension = array("jpg", "jpeg", "png", "webp");
+
+    
+  }
+}
+$id = $_GET['id'];
+$sql = mysqli_query($koneksi,  "SELECT * FROM tb_kategori WHERE id_kategori ='$id'");
+$data = mysqli_fetch_array($sql);
+
+if (isset($_POST['simpan'])) {
+    $nm_kategori = $_POST['nm_kategori'];
+
+    $query = mysqli_query($koneksi, "UPDATE tb_kategori SET nm_kategori = '$nm_kategori' WHERE id_kategori = '$id'");
+    if ($query) {
+        echo "<script>alert('Data Berhasil Diubah')</script>";
+        header("refresh:0, kategori.php");
+    } else {
+        echo "<script>alert('Data Gagal Diubah')</script>";
+        header("refresh:0, kategori.php");
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

@@ -1,24 +1,25 @@
 <?php
 include "koneksi.php";
-
-$id = $_GET['id'];
-$sql = mysqli_query($koneksi,  "SELECT * FROM tb_kategori WHERE id_kategori ='$id'");
-$data = mysqli_fetch_array($sql);
-
 if (isset($_POST['simpan'])) {
-    $nm_kategori = $_POST['nm_kategori'];
+  $auto = mysqli_query($koneksi, "select max(id_kategori) as max_code from tb_kategori");
+  $hasil = mysqli_fetch_array($auto);
+  $code = $hasil['max_code'];
+  $urutan = (int)substr($code, 1, 3);
+  $urutan++;
+  $huruf = "K";
+  $id_kategori = $huruf . sprintf("%03s", $urutan);
+  $nm_kategori = $_POST['nm_kategori'];
 
-    $query = mysqli_query($koneksi, "UPDATE tb_kategori SET nm_kategori = '$nm_kategori' WHERE id_kategori = '$id'");
-    if ($query) {
-        echo "<script>alert('Data Berhasil Diubah')</script>";
-        header("refresh:0, kategori.php");
-    } else {
-        echo "<script>alert('Data Gagal Diubah')</script>";
-        header("refresh:0, kategori.php");
-    }
+  $query = mysqli_query($koneksi, "INSERT INTO tb_kategori(id_kategori, nm_kategori) VALUES ('$id_kategori', '$nm_kategori')");
+  if ($query) {
+    echo "<script>alert('Data berhasil ditambahkan!')</script>";
+    header("refresh:0, kategori.php");
+  } else {
+    echo "<script>alert('Data gagal ditambahkan!')</script>";
+    header("refresh:0, kategori.php");
+  }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +27,7 @@ if (isset($_POST['simpan'])) {
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Kategori Produk - iFurnHolic</title>
+    <title>Kategori Produk - IP_Store Admin</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
