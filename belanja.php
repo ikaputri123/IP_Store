@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html class="no-js" lang="zxx">
     
@@ -5,7 +8,7 @@
 <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Shop List || limupa - Digital Products Store eCommerce Bootstrap 4 Template</title>
+        <title>Belanja - IP Store</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
@@ -42,6 +45,8 @@
         <link rel="stylesheet" href="css/responsive.css">
         <!-- Modernizr js -->
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        
     </head>
     <body>
     <!--[if lt IE 8]>
@@ -51,67 +56,6 @@
         <div class="body-wrapper">
             <!-- Begin Header Area -->
             <header>
-                <!-- Begin Header Top Area -->
-                <div class="header-top">
-                    <div class="container">
-                        <div class="row">
-                            <!-- Begin Header Top Left Area -->
-                            <div class="col-lg-3 col-md-4">
-                                <div class="header-top-left">
-                                    <ul class="phone-wrap">
-                                        <li><span>Telephone Enquiry:</span><a href="#">(+123) 123 321 345</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- Header Top Left Area End Here -->
-                            <!-- Begin Header Top Right Area -->
-                            <div class="col-lg-9 col-md-8">
-                                <div class="header-top-right">
-                                    <ul class="ht-menu">
-                                        <!-- Begin Setting Area -->
-                                        <li>
-                                            <div class="ht-setting-trigger"><span>Setting</span></div>
-                                            <div class="setting ht-setting">
-                                                <ul class="ht-setting-list">
-                                                    <li><a href="login-register.html">My Account</a></li>
-                                                    <li><a href="checkout.html">Checkout</a></li>
-                                                    <li><a href="login-register.html">Sign In</a></li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <!-- Setting Area End Here -->
-                                        <!-- Begin Currency Area -->
-                                        <li>
-                                            <span class="currency-selector-wrapper">Currency :</span>
-                                            <div class="ht-currency-trigger"><span>USD $</span></div>
-                                            <div class="currency ht-currency">
-                                                <ul class="ht-setting-list">
-                                                    <li><a href="#">EUR €</a></li>
-                                                    <li class="active"><a href="#">USD $</a></li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <!-- Currency Area End Here -->
-                                        <!-- Begin Language Area -->
-                                        <li>
-                                            <span class="language-selector-wrapper">Language :</span>
-                                            <div class="ht-language-trigger"><span>English</span></div>
-                                            <div class="language ht-language">
-                                                <ul class="ht-setting-list">
-                                                    <li class="active"><a href="#"><img src="images/menu/flag-icon/1.jpg" alt="">English</a></li>
-                                                    <li><a href="#"><img src="images/menu/flag-icon/2.jpg" alt="">Français</a></li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <!-- Language Area End Here -->
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- Header Top Right Area End Here -->
-                        </div>
-                    </div>
-                </div>
-                <!-- Header Top Area End Here -->
                 <!-- Begin Header Middle Area -->
                 <div class="header-middle pl-sm-0 pr-sm-0 pl-xs-0 pr-xs-0">
                     <div class="container">
@@ -120,7 +64,7 @@
                             <div class="col-lg-3">
                                 <div class="logo pb-sm-30 pb-xs-30">
                                     <a href="index.html">
-                                        <img src="images/menu/logo/1.jpg" alt="">
+                                        <h1>IP_Store</h1>
                                     </a>
                                 </div>
                             </div>
@@ -211,8 +155,7 @@
                                         <!-- Begin Header Middle Wishlist Area -->
                                         <li class="hm-wishlist">
                                             <a href="wishlist.html">
-                                                <span class="cart-item-count wishlist-item-count">0</span>
-                                                <i class="fa fa-heart-o"></i>
+                                                <i class="fa fa-user"></i>
                                             </a>
                                         </li>
                                         <!-- Header Middle Wishlist Area End Here -->
@@ -274,7 +217,7 @@
                 </div>
                 <!-- Header Middle Area End Here -->
                 <!-- Begin Header Bottom Area -->
-                <div class="header-bottom mb-0 header-sticky stick d-none d-lg-block d-xl-block">
+                <div class="header-bottom header-sticky stick d-none d-lg-block d-xl-block">
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-12">
@@ -282,125 +225,9 @@
                                 <div class="hb-menu">
                                     <nav>
                                         <ul>
-                                            <li class="dropdown-holder"><a href="index.html">Home</a>
-                                                <ul class="hb-dropdown">
-                                                    <li><a href="index.html">Home One</a></li>
-                                                    <li><a href="index-2.html">Home Two</a></li>
-                                                    <li><a href="index-3.html">Home Three</a></li>
-                                                    <li><a href="index-4.html">Home Four</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="catmenu-dropdown megamenu-holder"><a href="shop-left-sidebar.html">Shop</a>
-                                                <ul class="megamenu hb-megamenu">
-                                                    <li><a href="shop-left-sidebar.html">Shop Page Layout</a>
-                                                        <ul>
-                                                            <li><a href="shop-3-column.html">Shop 3 Column</a></li>
-                                                            <li><a href="shop-4-column.html">Shop 4 Column</a></li>
-                                                            <li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
-                                                            <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                                            <li class="active"><a href="shop-list.html">Shop List</a></li>
-                                                            <li><a href="shop-list-left-sidebar.html">Shop List Left Sidebar</a></li>
-                                                            <li><a href="shop-list-right-sidebar.html">Shop List Right Sidebar</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="single-product-gallery-left.html">Single Product Style</a>
-                                                        <ul>
-                                                            <li><a href="single-product-carousel.html">Single Product Carousel</a></li>
-                                                            <li><a href="single-product-gallery-left.html">Single Product Gallery Left</a></li>
-                                                            <li><a href="single-product-gallery-right.html">Single Product Gallery Right</a></li>
-                                                            <li><a href="single-product-tab-style-top.html">Single Product Tab Style Top</a></li>
-                                                            <li><a href="single-product-tab-style-left.html">Single Product Tab Style Left</a></li>
-                                                            <li><a href="single-product-tab-style-right.html">Single Product Tab Style Right</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="single-product.html">Single Products</a>
-                                                        <ul>
-                                                            <li><a href="single-product.html">Single Product</a></li>
-                                                            <li><a href="single-product-sale.html">Single Product Sale</a></li>
-                                                            <li><a href="single-product-group.html">Single Product Group</a></li>
-                                                            <li><a href="single-product-normal.html">Single Product Normal</a></li>
-                                                            <li><a href="single-product-affiliate.html">Single Product Affiliate</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown-holder"><a href="blog-left-sidebar.html">Blog</a>
-                                                <ul class="hb-dropdown">
-                                                    <li class="sub-dropdown-holder"><a href="blog-left-sidebar.html">Blog Grid View</a>
-                                                        <ul class="hb-dropdown hb-sub-dropdown">
-                                                            <li><a href="blog-2-column.html">Blog 2 Column</a></li>
-                                                            <li><a href="blog-3-column.html">Blog 3 Column</a></li>
-                                                            <li><a href="blog-left-sidebar.html">Grid Left Sidebar</a></li>
-                                                            <li><a href="blog-right-sidebar.html">Grid Right Sidebar</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="sub-dropdown-holder"><a href="blog-list-left-sidebar.html">Blog List View</a>
-                                                        <ul class="hb-dropdown hb-sub-dropdown">
-                                                            <li><a href="blog-list.html">Blog List</a></li>
-                                                            <li><a href="blog-list-left-sidebar.html">List Left Sidebar</a></li>
-                                                            <li><a href="blog-list-right-sidebar.html">List Right Sidebar</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="sub-dropdown-holder"><a href="blog-details-left-sidebar.html">Blog Details</a>
-                                                        <ul class="hb-dropdown hb-sub-dropdown">
-                                                            <li><a href="blog-details-left-sidebar.html">Left Sidebar</a></li>
-                                                            <li><a href="blog-details-right-sidebar.html">Right Sidebar</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="sub-dropdown-holder"><a href="blog-gallery-format.html">Blog Format</a>
-                                                        <ul class="hb-dropdown hb-sub-dropdown">
-                                                            <li><a href="blog-audio-format.html">Blog Audio Format</a></li>
-                                                            <li><a href="blog-video-format.html">Blog Video Format</a></li>
-                                                            <li><a href="blog-gallery-format.html">Blog Gallery Format</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="catmenu-dropdown megamenu-static-holder"><a href="index.html">Pages</a>
-                                                <ul class="megamenu hb-megamenu">
-                                                    <li><a href="blog-left-sidebar.html">Blog Layouts</a>
-                                                        <ul>
-                                                            <li><a href="blog-2-column.html">Blog 2 Column</a></li>
-                                                            <li><a href="blog-3-column.html">Blog 3 Column</a></li>
-                                                            <li><a href="blog-left-sidebar.html">Grid Left Sidebar</a></li>
-                                                            <li><a href="blog-right-sidebar.html">Grid Right Sidebar</a></li>
-                                                            <li><a href="blog-list.html">Blog List</a></li>
-                                                            <li><a href="blog-list-left-sidebar.html">List Left Sidebar</a></li>
-                                                            <li><a href="blog-list-right-sidebar.html">List Right Sidebar</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="blog-details-left-sidebar.html">Blog Details Pages</a>
-                                                        <ul>
-                                                            <li><a href="blog-details-left-sidebar.html">Left Sidebar</a></li>
-                                                            <li><a href="blog-details-right-sidebar.html">Right Sidebar</a></li>
-                                                            <li><a href="blog-audio-format.html">Blog Audio Format</a></li>
-                                                            <li><a href="blog-video-format.html">Blog Video Format</a></li>
-                                                            <li><a href="blog-gallery-format.html">Blog Gallery Format</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="index.html">Other Pages</a>
-                                                        <ul>
-                                                            <li><a href="login-register.html">My Account</a></li>
-                                                            <li><a href="checkout.html">Checkout</a></li>
-                                                            <li><a href="compare.html">Compare</a></li>
-                                                            <li><a href="wishlist.html">Wishlist</a></li>
-                                                            <li><a href="shopping-cart.html">Shopping Cart</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="index.html">Other Pages 2</a>
-                                                        <ul>
-                                                            <li><a href="contact.html">Contact</a></li>
-                                                            <li><a href="about-us.html">About Us</a></li>
-                                                            <li><a href="faq.html">FAQ</a></li>
-                                                            <li><a href="404.html">404 Error</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="about-us.html">About Us</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="shop-left-sidebar.html">Smartwatch</a></li>
-                                            <li><a href="shop-left-sidebar.html">Accessories</a></li>
+                                            <li><a href="about-us.php">Beranda</a></li>
+                                            <li><a href="contact.php">Belanja</a></li>
+                                            <li><a href="shop-left-sidebar.php">Hubungi Kami</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -427,8 +254,8 @@
                 <div class="container">
                     <div class="breadcrumb-content">
                         <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li class="active">Shop List</li>
+                            <li><a href="index.html">Beranda</a></li>
+                            <li class="active">Belanja</li>
                         </ul>
                     </div>
                 </div>
@@ -1021,7 +848,7 @@
                                                         <div class="shop-add-action mb-xs-30">
                                                             <ul class="add-actions-link">
                                                                 <li class="add-cart"><a href="#">Add to cart</a></li>
-                                                                <li class="wishlist"><a href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a></li>
+                                                               
                                                                 <li><a class="quick-view" data-toggle="modal" data-target="#exampleModalCenter" href="#"><i class="fa fa-eye"></i>Quick view</a></li>
                                                             </ul>
                                                         </div>
@@ -1060,15 +887,7 @@
                                                                 <p>Beach Camera Exclusive Bundle - Includes Two Samsung Radiant 360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire Room With Exquisite Sound via Ring Radiator Technology. Stream And Control R3 Speakers Wirelessly With Your Smartphone. Sophisticated, Modern Desig</p>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="shop-add-action mb-xs-30">
-                                                            <ul class="add-actions-link">
-                                                                <li class="add-cart"><a href="#">Add to cart</a></li>
-                                                                <li class="wishlist"><a href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a></li>
-                                                                <li><a class="quick-view" data-toggle="modal" data-target="#exampleModalCenter" href="#"><i class="fa fa-eye"></i>Quick view</a></li>
-                                                            </ul>
-                                                        </div>
+                                                    
                                                     </div>
                                                 </div>
                                                 <div class="row product-layout-list">
@@ -1104,15 +923,7 @@
                                                                 <p>Beach Camera Exclusive Bundle - Includes Two Samsung Radiant 360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire Room With Exquisite Sound via Ring Radiator Technology. Stream And Control R3 Speakers Wirelessly With Your Smartphone. Sophisticated, Modern Desig</p>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="shop-add-action mb-xs-30">
-                                                            <ul class="add-actions-link">
-                                                                <li class="add-cart"><a href="#">Add to cart</a></li>
-                                                                <li class="wishlist"><a href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a></li>
-                                                                <li><a class="quick-view" data-toggle="modal" data-target="#exampleModalCenter" href="#"><i class="fa fa-eye"></i>Quick view</a></li>
-                                                            </ul>
-                                                        </div>
+                                                   
                                                     </div>
                                                 </div>
                                                 <div class="row product-layout-list">
@@ -1148,15 +959,7 @@
                                                                 <p>Beach Camera Exclusive Bundle - Includes Two Samsung Radiant 360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire Room With Exquisite Sound via Ring Radiator Technology. Stream And Control R3 Speakers Wirelessly With Your Smartphone. Sophisticated, Modern Desig</p>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="shop-add-action mb-xs-30">
-                                                            <ul class="add-actions-link">
-                                                                <li class="add-cart"><a href="#">Add to cart</a></li>
-                                                                <li class="wishlist"><a href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a></li>
-                                                                <li><a class="quick-view" data-toggle="modal" data-target="#exampleModalCenter" href="#"><i class="fa fa-eye"></i>Quick view</a></li>
-                                                            </ul>
-                                                        </div>
+                                                  
                                                     </div>
                                                 </div>
                                                 <div class="row product-layout-list">
@@ -1192,15 +995,7 @@
                                                                 <p>Beach Camera Exclusive Bundle - Includes Two Samsung Radiant 360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire Room With Exquisite Sound via Ring Radiator Technology. Stream And Control R3 Speakers Wirelessly With Your Smartphone. Sophisticated, Modern Desig</p>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="shop-add-action mb-xs-30">
-                                                            <ul class="add-actions-link">
-                                                                <li class="add-cart"><a href="#">Add to cart</a></li>
-                                                                <li class="wishlist"><a href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a></li>
-                                                                <li><a class="quick-view" data-toggle="modal" data-target="#exampleModalCenter" href="#"><i class="fa fa-eye"></i>Quick view</a></li>
-                                                            </ul>
-                                                        </div>
+                                                   
                                                     </div>
                                                 </div>
                                                 <div class="row product-layout-list">
@@ -1236,15 +1031,7 @@
                                                                 <p>Beach Camera Exclusive Bundle - Includes Two Samsung Radiant 360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire Room With Exquisite Sound via Ring Radiator Technology. Stream And Control R3 Speakers Wirelessly With Your Smartphone. Sophisticated, Modern Desig</p>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="shop-add-action mb-xs-30">
-                                                            <ul class="add-actions-link">
-                                                                <li class="add-cart"><a href="#">Add to cart</a></li>
-                                                                <li class="wishlist"><a href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a></li>
-                                                                <li><a class="quick-view" data-toggle="modal" data-target="#exampleModalCenter" href="#"><i class="fa fa-eye"></i>Quick view</a></li>
-                                                            </ul>
-                                                        </div>
+                                                  
                                                     </div>
                                                 </div>
                                                 <div class="row product-layout-list">
@@ -1280,15 +1067,7 @@
                                                                 <p>Beach Camera Exclusive Bundle - Includes Two Samsung Radiant 360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire Room With Exquisite Sound via Ring Radiator Technology. Stream And Control R3 Speakers Wirelessly With Your Smartphone. Sophisticated, Modern Desig</p>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="shop-add-action mb-xs-30">
-                                                            <ul class="add-actions-link">
-                                                                <li class="add-cart"><a href="#">Add to cart</a></li>
-                                                                <li class="wishlist"><a href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a></li>
-                                                                <li><a class="quick-view" data-toggle="modal" data-target="#exampleModalCenter" href="#"><i class="fa fa-eye"></i>Quick view</a></li>
-                                                            </ul>
-                                                        </div>
+                                                   
                                                     </div>
                                                 </div>
                                                 <div class="row product-layout-list">
@@ -1324,15 +1103,7 @@
                                                                 <p>Beach Camera Exclusive Bundle - Includes Two Samsung Radiant 360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire Room With Exquisite Sound via Ring Radiator Technology. Stream And Control R3 Speakers Wirelessly With Your Smartphone. Sophisticated, Modern Desig</p>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="shop-add-action mb-xs-30">
-                                                            <ul class="add-actions-link">
-                                                                <li class="add-cart"><a href="#">Add to cart</a></li>
-                                                                <li class="wishlist"><a href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a></li>
-                                                                <li><a class="quick-view" data-toggle="modal" data-target="#exampleModalCenter" href="#"><i class="fa fa-eye"></i>Quick view</a></li>
-                                                            </ul>
-                                                        </div>
+                                                  
                                                     </div>
                                                 </div>
                                                 <div class="row product-layout-list">
@@ -1368,15 +1139,7 @@
                                                                 <p>Beach Camera Exclusive Bundle - Includes Two Samsung Radiant 360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire Room With Exquisite Sound via Ring Radiator Technology. Stream And Control R3 Speakers Wirelessly With Your Smartphone. Sophisticated, Modern Desig</p>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="shop-add-action mb-xs-30">
-                                                            <ul class="add-actions-link">
-                                                                <li class="add-cart"><a href="#">Add to cart</a></li>
-                                                                <li class="wishlist"><a href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a></li>
-                                                                <li><a class="quick-view" data-toggle="modal" data-target="#exampleModalCenter" href="#"><i class="fa fa-eye"></i>Quick view</a></li>
-                                                            </ul>
-                                                        </div>
+                                                   
                                                     </div>
                                                 </div>
                                                 <div class="row product-layout-list">
@@ -1412,15 +1175,7 @@
                                                                 <p>Beach Camera Exclusive Bundle - Includes Two Samsung Radiant 360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire Room With Exquisite Sound via Ring Radiator Technology. Stream And Control R3 Speakers Wirelessly With Your Smartphone. Sophisticated, Modern Desig</p>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="shop-add-action mb-xs-30">
-                                                            <ul class="add-actions-link">
-                                                                <li class="add-cart"><a href="#">Add to cart</a></li>
-                                                                <li class="wishlist"><a href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a></li>
-                                                                <li><a class="quick-view" data-toggle="modal" data-target="#exampleModalCenter" href="#"><i class="fa fa-eye"></i>Quick view</a></li>
-                                                            </ul>
-                                                        </div>
+                                                   
                                                     </div>
                                                 </div>
                                                 <div class="row product-layout-list">
@@ -1456,15 +1211,7 @@
                                                                 <p>Beach Camera Exclusive Bundle - Includes Two Samsung Radiant 360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire Room With Exquisite Sound via Ring Radiator Technology. Stream And Control R3 Speakers Wirelessly With Your Smartphone. Sophisticated, Modern Desig</p>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="shop-add-action mb-xs-30">
-                                                            <ul class="add-actions-link">
-                                                                <li class="add-cart"><a href="#">Add to cart</a></li>
-                                                                <li class="wishlist"><a href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a></li>
-                                                                <li><a class="quick-view" data-toggle="modal" data-target="#exampleModalCenter" href="#"><i class="fa fa-eye"></i>Quick view</a></li>
-                                                            </ul>
-                                                        </div>
+                                                  
                                                     </div>
                                                 </div>
                                                 <div class="row product-layout-list last-child">
@@ -1500,15 +1247,7 @@
                                                                 <p>Beach Camera Exclusive Bundle - Includes Two Samsung Radiant 360 R3 Wi-Fi Bluetooth Speakers. Fill The Entire Room With Exquisite Sound via Ring Radiator Technology. Stream And Control R3 Speakers Wirelessly With Your Smartphone. Sophisticated, Modern Desig</p>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="shop-add-action">
-                                                            <ul class="add-actions-link">
-                                                                <li class="add-cart"><a href="#">Add to cart</a></li>
-                                                                <li class="wishlist"><a href="wishlist.html"><i class="fa fa-heart-o"></i>Add to wishlist</a></li>
-                                                                <li><a class="quick-view" data-toggle="modal" data-target="#exampleModalCenter" href="#"><i class="fa fa-eye"></i>Quick view</a></li>
-                                                            </ul>
-                                                        </div>
+                                                 
                                                     </div>
                                                 </div>
                                             </div>
@@ -1541,12 +1280,12 @@
                             <!--sidebar-categores-box start  -->
                             <div class="sidebar-categores-box mt-sm-30 mt-xs-30">
                                 <div class="sidebar-title">
-                                    <h2>Laptop</h2>
+                                
                                 </div>
                                 <!-- category-sub-menu start -->
                                 <div class="category-sub-menu">
                                     <ul>
-                                        <li class="has-sub"><a href="# ">Prime Video</a>
+                                        <li class="has-sub">
                                             <ul>
                                                 <li><a href="#">All Videos</a></li>
                                                 <li><a href="#">Blouses</a></li>
@@ -1558,7 +1297,7 @@
                                                 <li><a href="#">Getting Started</a></li>  
                                             </ul>
                                         </li>
-                                        <li class="has-sub"><a href="#">Computer</a>
+                                        <li class="has-sub">
                                             <ul>
                                                 <li><a href="#">TV & Video</a></li>
                                                 <li><a href="#">Audio & Theater</a></li>
@@ -1569,7 +1308,7 @@
                                                 <li><a href="#">Wireless Speakers</a></li> 
                                             </ul>
                                         </li>
-                                        <li class="has-sub"><a href="#">Electronics</a>
+                                        <li class="has-sub">
                                             <ul>
                                                 <li><a href="#">Amazon Home</a></li>
                                                 <li><a href="#">Kitchen & Dining</a></li>
@@ -1585,20 +1324,20 @@
                             <!--sidebar-categores-box start  -->
                             <div class="sidebar-categores-box">
                                 <div class="sidebar-title">
-                                    <h2>Filter By</h2>
+                                    <h2>Filter</h2>
                                 </div>
                                 <!-- btn-clear-all start -->
                                 <button class="btn-clear-all mb-sm-30 mb-xs-30">Clear all</button>
                                 <!-- btn-clear-all end -->
                                 <!-- filter-sub-area start -->
                                 <div class="filter-sub-area">
-                                    <h5 class="filter-sub-titel">Brand</h5>
+                                    <h5 class="filter-sub-titel">Kategori Produk</h5>
                                     <div class="categori-checkbox">
                                         <form action="#">
                                             <ul>
-                                                <li><input type="checkbox" name="product-categori"><a href="#">Prime Video (13)</a></li>
-                                                <li><input type="checkbox" name="product-categori"><a href="#">Computers (12)</a></li>
-                                                <li><input type="checkbox" name="product-categori"><a href="#">Electronics (11)</a></li>
+                                                <li><input type="checkbox" name="product-categori"><a href="#">Laptop</a></li>
+                                                <li><input type="checkbox" name="product-categori"><a href="#">Gadget</a></li>
+                                                
                                             </ul>
                                         </form>
                                     </div>
@@ -1606,12 +1345,11 @@
                                 <!-- filter-sub-area end -->
                                 <!-- filter-sub-area start -->
                                 <div class="filter-sub-area pt-sm-10 pt-xs-10">
-                                    <h5 class="filter-sub-titel">Categories</h5>
+                                   
                                     <div class="categori-checkbox">
                                         <form action="#">
                                             <ul>
-                                                <li><input type="checkbox" name="product-categori"><a href="#">Graphic Corner (10)</a></li>
-                                                <li><input type="checkbox" name="product-categori"><a href="#"> Studio Design (6)</a></li>
+                                              
                                             </ul>
                                         </form>
                                     </div>
@@ -1619,14 +1357,11 @@
                                 <!-- filter-sub-area end -->
                                 <!-- filter-sub-area start -->
                                 <div class="filter-sub-area pt-sm-10 pt-xs-10">
-                                    <h5 class="filter-sub-titel">Size</h5>
+                                   
                                     <div class="size-checkbox">
                                         <form action="#">
                                             <ul>
-                                                <li><input type="checkbox" name="product-size"><a href="#">S (3)</a></li>
-                                                <li><input type="checkbox" name="product-size"><a href="#">M (3)</a></li>
-                                                <li><input type="checkbox" name="product-size"><a href="#">L (3)</a></li>
-                                                <li><input type="checkbox" name="product-size"><a href="#">XL (3)</a></li>
+                                                
                                             </ul>
                                         </form>
                                     </div>
@@ -1634,14 +1369,11 @@
                                 <!-- filter-sub-area end -->
                                 <!-- filter-sub-area start -->
                                 <div class="filter-sub-area pt-sm-10 pt-xs-10">
-                                    <h5 class="filter-sub-titel">Color</h5>
+                                   
                                     <div class="color-categoriy">
                                         <form action="#">
                                             <ul>
-                                                <li><span class="white"></span><a href="#">White (1)</a></li>
-                                                <li><span class="black"></span><a href="#">Black (1)</a></li>
-                                                <li><span class="Orange"></span><a href="#">Orange (3) </a></li>
-                                                <li><span class="Blue"></span><a href="#">Blue  (2) </a></li>
+                                              
                                             </ul>
                                         </form>
                                     </div>
@@ -1649,13 +1381,11 @@
                                 <!-- filter-sub-area end -->
                                 <!-- filter-sub-area start -->
                                 <div class="filter-sub-area pt-sm-10 pb-sm-15 pb-xs-15">
-                                    <h5 class="filter-sub-titel">Dimension</h5>
+                                  
                                     <div class="categori-checkbox">
                                         <form action="#">
                                             <ul>
-                                                <li><input type="checkbox" name="product-categori"><a href="#">40x60cm (6)</a></li>
-                                                <li><input type="checkbox" name="product-categori"><a href="#">60x90cm (6)</a></li>
-                                                <li><input type="checkbox" name="product-categori"><a href="#">80x120cm (6)</a></li>
+                                               
                                             </ul>
                                         </form>
                                     </div>
@@ -1666,16 +1396,11 @@
                             <!-- category-sub-menu start -->
                             <div class="sidebar-categores-box mb-sm-0">
                                 <div class="sidebar-title">
-                                    <h2>Laptop</h2>
+                                   
                                 </div>
                                 <div class="category-tags">
                                     <ul>
-                                        <li><a href="# ">Devita</a></li>
-                                        <li><a href="# ">Cameras</a></li>
-                                        <li><a href="# ">Sony</a></li>
-                                        <li><a href="# ">Computer</a></li>
-                                        <li><a href="# ">Big Sale</a></li>
-                                        <li><a href="# ">Accessories</a></li>
+                                      
                                     </ul>
                                 </div>
                                 <!-- category-sub-menu end -->

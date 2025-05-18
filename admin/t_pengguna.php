@@ -1,66 +1,54 @@
 <?php
+session_start();
 include "koneksi.php";
 
-//pastikan ada ID produk yang dikirimkan
-if (isset($_GET['id'])) {
-  $id_produk = $_GET['id'];
-
-  //ambil data produk berdasarkan ID
-  $query = mysqli_query($koneksi, "SELECT * FROM tb_produk WHERE id_produk = '$id_produk'");
-  $data = mysqli_fetch_array($query);
+// Cek apakah sudah login
+if (!isset($_SESSION["login"])) {
+    header("Location: login.php");
+    exit;
 }
 
-//jika tombol update ditekan
-if (isset($_POST['update'])) {
-  $nm_produk = $_POST['nm_produk'];
-  $harga = $_POST['harga'];
-  $stok = $_POST['stok'];
-  $desk  = $_POST['desk'];
-  $id_kategori  = $_POST['id_kategori'];
-  $gambar_lama = $_POST['gambar_lama'];
-  
-  //cek apakah ada gambar baru yang diupload
-  if ($_FILES['gambar']['name'] != "") {
-    $imgfile = $_FILES['gambar']['name'];
-    $tmp_file = $_FILES['gambar']['tmp_name'];
-    $extension = strtolower(pathinfo($imgfile, PATHINFO_EXTENSION));
-    $dir = "produk_img/";
-    $allowed_extension = array("jpg", "jpeg", "png", "webp");
-    $dir - "produk_img/";
-    $allowed_extension = array('jpg', 'jpeg', 'png', 'webp');
-
-    if (!in_array($extension, $allowed_extension)) {
-        echo "<script>alert('format gambartidak valid!');</script>";
-    } else {
-        //hapus gambar lama jika ada
-        if (file_exists($dir . gambar_lama) && $gambar_lama - ""){
-            unlink($dir . $gambar_lama);
-        }
-
-        //simpan gambar baru dengan nama unik
-        $imgnewfile - md5(time(). $imgfile) . "." . $extension;
-        move_uploaded_file($tmp_file, $dir . $imgnewfile);
-    }
-  }else{
-    $imgnewfile = $gambar_lama; // jika tidak ada gambar baru,gunakan gambar lama
+// Cek apakah status tersedia dan pastikan user adalah admin
+if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
+    echo "<script>
+    alert('Akses ditolak! Halaman ini hanya untuk Admin.');
+    window.location.href='login.php';
+  </script>";
+    exit;
 }
-$id = $_GET['id'];
-$sql = mysqli_query($koneksi,  "SELECT * FROM tb_kategori WHERE id_kategori ='$id'");
-$data = mysqli_fetch_array($sql);
 
 if (isset($_POST['simpan'])) {
-    $nm_kategori = $_POST['nm_kategori'];
+    // Ambil ID terakhir dari tb_user
+    $auto = mysqli_query($koneksi, "SELECT MAX(id_user) AS max_code FROM tb_user");
+    $hasil = mysqli_fetch_array($auto);
+    $code = $hasil['max_code'];
 
-    $query = mysqli_query($koneksi, "UPDATE tb_kategori SET nm_kategori = '$nm_kategori' WHERE id_kategori = '$id'");
+    // Menghasilkan ID baru dengan format U001, U002, dst.
+    $urutan = (int)substr($code, 1, 3);
+    $urutan++;
+    $huruf = "U";
+    $id_user = $huruf . sprintf("%03s", $urutan);
+
+    // Ambil input dari form
+    $username = $_POST['username'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash password
+    $status = $_POST['status'];
+
+    // Query untuk insert data ke tb_user
+    $query = mysqli_query($koneksi, "INSERT INTO tb_user (id_user, username, password, status) 
+                                     VALUES ('$id_user', '$username', '$password', '$status')");
+
+    // Notifikasi
     if ($query) {
-        echo "<script>alert('Data Berhasil Diubah')</script>";
-        header("refresh:0, kategori.php");
+        echo "<script>alert('Data pengguna berhasil ditambahkan!');</script>";
+        header("refresh:0, pengguna.php");
     } else {
-        echo "<script>alert('Data Gagal Diubah')</script>";
-        header("refresh:0, kategori.php");
+        echo "<script>alert('Data pengguna gagal ditambahkan!');</script>";
+        header("refresh:0, pengguna.php");
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,7 +56,7 @@ if (isset($_POST['simpan'])) {
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Produk - Nama Website Admin</title>
+    <title>Pengguna - Furnimart Admin</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -101,7 +89,7 @@ if (isset($_POST['simpan'])) {
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.php" class="logo d-flex align-items-center">
                 <img src="assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block">Nama Website</span>
+                <span class="d-none d-lg-block">Furnimart</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
@@ -112,24 +100,16 @@ if (isset($_POST['simpan'])) {
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-                        <!-- profile-img.jpg diganti nama file gambar kalian -->
+                        <img src="assets/img/user.jpg" alt="Profile" class="rounded-circle">
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>Nama Kalian</h6>
+                            <h6><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?></h6>
                             <span>Admin</span>
                         </li>
                         <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
+                            <a class="dropdown-item d-flex align-items-center" href="logout.php">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Sign Out</span>
                             </a>
@@ -163,7 +143,7 @@ if (isset($_POST['simpan'])) {
             </li><!-- End Kategori Produk Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link" href="produk.php">
+                <a class="nav-link collapsed" href="produk.php">
                     <i class="bi bi-shop"></i>
                     <span>Produk</span>
                 </a>
@@ -190,7 +170,7 @@ if (isset($_POST['simpan'])) {
                 </a>
             </li><!-- End Laporan Page Nav -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="pengguna.php">
+                <a class="nav-link" href="pengguna.php">
                     <i class="bi bi-people"></i>
                     <span>Pengguna</span>
                 </a>
@@ -202,50 +182,45 @@ if (isset($_POST['simpan'])) {
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Produk</h1>
+            <h1>Pengguna</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.php">Beranda</a></li>
-                    <li class="breadcrumb-item">Produk</li>
-                    <li class="breadcrumb-item active">Edit</li>
+                    <li class="breadcrumb-item">Pengguna</li>
+                    <li class="breadcrumb-item active">Tambah</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
+
         <section class="section">
             <div class="row">
                 <div class="col-lg-6">
-
                     <div class="card">
                         <div class="card-body">
+                            <form class="row g-3 mt-2" method="post">
+                                <!-- Username -->
+                                <div class="col-12">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username" maxlength="100" required>
+                                </div>
 
-                            <!-- Vertical Form -->
-                            <form class="row g-3 mt-2" method="post" enctype="multipart/form-data">
+                                <!-- Password -->
                                 <div class="col-12">
-                                    <label for="nm_produk" class="form-label">Nama Produk</label>
-                                    <input type="text" class="form-control" id="nm_produk" name="nm_produk" placeholder="Masukkan Nama Produk" required>
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan Password" required>
                                 </div>
+
+                                <!-- Status -->
                                 <div class="col-12">
-                                    <label for="harga" class="form-label">Harga</label>
-                                    <input type="number" class="form-control" id="harga" name="harga" placeholder="Masukkan Harga Produk" required>
-                                </div>
-                                <div class="col-12">
-                                    <label for="stok" class="form-label">Stok</label>
-                                    <input type="number" class="form-control" id="stok" name="stok" placeholder="Masukkan Stok Produk" required>
-                                </div>
-                                <div class="col-12">
-                                    <label for="desk" class="form-label">Deskripsi</label>
-                                    <textarea class="form-control" id="desk" name="desk" placeholder="Masukkan Deskripsi Produk" required></textarea>
-                                </div>
-                                <div class="col-12">
-                                    <label for="id_kategori" class="form-label">Kategori</label>
-                                    <select class="form-control" id="id_kategori" name="id_kategori" required>
-                                        <option value="">-- Pilih Kategori --</option>
+                                    <label for="status" class="form-label">Status</label>
+                                    <select class="form-select" id="status" name="status" required>
+                                        <option value="">Pilih Status</option>
+                                        <option value="admin">Admin</option>
+                                        <option value="customer">Customer</option>
                                     </select>
                                 </div>
-                                <div class="col-12">
-                                    <label for="gambar" class="form-label">Gambar Produk</label>
-                                    <input type="file" class="form-control" id="gambar" name="gambar" accept="image/*">
-                                </div>
+
+                                <!-- Tombol -->
                                 <div class="text-center">
                                     <button type="reset" class="btn btn-secondary">Reset</button>
                                     <button type="submit" class="btn btn-primary" name="simpan">Simpan</button>
@@ -254,20 +229,19 @@ if (isset($_POST['simpan'])) {
 
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
     </main><!-- End #main -->
-Nama Website<
+
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">
-            &copy; Copyright <strong><span>/span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>Furnimart</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Designed by <a href="link ig">Nama Kalian</a>
+            Designed by <a href="https://instagram.com/dea.salsa.503/" target="_blank">Dea Salsabilla</a>
         </div>
     </footer><!-- End Footer -->
 
