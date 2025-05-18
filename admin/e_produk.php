@@ -33,12 +33,12 @@ if (isset($_POST['update'])) {
         echo "<script>alert('format gambartidak valid!');</script>";
     } else {
         //hapus gambar lama jika ada
-        if (file_exists($dir . gambar_lama) && $gambar_lama - ""){
+        if (file_exists($dir . $gambar_lama) && $gambar_lama - ""){
             unlink($dir . $gambar_lama);
         }
 
         //simpan gambar baru dengan nama unik
-        $imgnewfile - md5(time(). $imgfile) . "." . $extension;
+        $imgnewfile = md5(time() . $imgfile) . "." . $extension;
         move_uploaded_file($tmp_file, $dir . $imgnewfile);
     }
   }else{
@@ -68,7 +68,7 @@ if (isset($_POST['simpan'])) {
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Produk - Nama Website Admin</title>
+    <title>Produk - IP_Store Admin</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -101,7 +101,7 @@ if (isset($_POST['simpan'])) {
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.php" class="logo d-flex align-items-center">
                 <img src="assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block">Nama Website</span>
+                <span class="d-none d-lg-block">IP_Store</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
@@ -112,13 +112,13 @@ if (isset($_POST['simpan'])) {
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                        <img src="assets/img/user.jpg" alt="Profile" class="rounded-circle">
                         <!-- profile-img.jpg diganti nama file gambar kalian -->
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>Nama Kalian</h6>
+                            <h6>IkaPutri</h6>
                             <span>Admin</span>
                         </li>
                         <li>
@@ -143,7 +143,7 @@ if (isset($_POST['simpan'])) {
 
     </header><!-- End Header -->
 
-    <!-- ======= Sidebar ======= -->
+     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
 
         <ul class="sidebar-nav" id="sidebar-nav">
@@ -157,41 +157,41 @@ if (isset($_POST['simpan'])) {
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="kategori.php">
-                    <i class="bi bi-tags"></i>
+                    <i class="bi bi-handbag"></i>
                     <span>Kategori Produk</span>
                 </a>
             </li><!-- End Kategori Produk Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link" href="produk.php">
-                    <i class="bi bi-shop"></i>
+                <a class="nav-link collapsed" href="produk.php">
+                    <i class="bi bi-box-seam-fill"></i>
                     <span>Produk</span>
                 </a>
             </li><!-- End Produk Page Nav -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="keranjang.php">
-                    <i class="bi bi-cart"></i>
+                    <i class="bi bi-cart4"></i>
                     <span>Keranjang</span>
                 </a>
             </li><!-- End Keranjang Page Nav -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="transaksi.php">
-                    <i class="bi bi-receipt"></i>
+                    <i class="bi bi-credit-card"></i>
                     <span>Transaksi</span>
                 </a>
             </li><!-- End Transaksi Page Nav -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="laporan.php">
-                    <i class="bi bi-file-earmark-bar-graph"></i>
+                    <i class="bi bi-journal-text"></i>
                     <span>Laporan</span>
                 </a>
             </li><!-- End Laporan Page Nav -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="pengguna.php">
-                    <i class="bi bi-people"></i>
+                <a class="nav-link" href="pengguna.php">
+                    <i class="bi bi-person-fill"></i>
                     <span>Pengguna</span>
                 </a>
             </li><!-- End Pengguna Page Nav -->
@@ -260,14 +260,14 @@ if (isset($_POST['simpan'])) {
         </section>
 
     </main><!-- End #main -->
-Nama Website<
+
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">
-            &copy; Copyright <strong><span>/span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>IP_Store</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Designed by <a href="link ig">Nama Kalian</a>
+            Designed by <a href="https://www.instagram.com/ya.putri_?igsh=azk4dHlwYmNpZGs="taeget ="_blank">IkaPutriRachmawati</a>
         </div>
     </footer><!-- End Footer -->
 
