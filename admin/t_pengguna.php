@@ -56,7 +56,7 @@ if (isset($_POST['simpan'])) {
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Pengguna - Furnimart Admin</title>
+    <title>Pengguna - IP_Store Admin</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -89,7 +89,7 @@ if (isset($_POST['simpan'])) {
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.php" class="logo d-flex align-items-center">
                 <img src="assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block">Furnimart</span>
+                <span class="d-none d-lg-block">IP_Store</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
@@ -123,7 +123,7 @@ if (isset($_POST['simpan'])) {
 
     </header><!-- End Header -->
 
-    <!-- ======= Sidebar ======= -->
+     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
 
         <ul class="sidebar-nav" id="sidebar-nav">
@@ -137,47 +137,103 @@ if (isset($_POST['simpan'])) {
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="kategori.php">
-                    <i class="bi bi-tags"></i>
+                    <i class="bi bi-handbag"></i>
                     <span>Kategori Produk</span>
                 </a>
             </li><!-- End Kategori Produk Page Nav -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="produk.php">
-                    <i class="bi bi-shop"></i>
+                    <i class="bi bi-box-seam-fill"></i>
                     <span>Produk</span>
                 </a>
             </li><!-- End Produk Page Nav -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="keranjang.php">
-                    <i class="bi bi-cart"></i>
+                    <i class="bi bi-cart4"></i>
                     <span>Keranjang</span>
                 </a>
             </li><!-- End Keranjang Page Nav -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="transaksi.php">
-                    <i class="bi bi-receipt"></i>
+                    <i class="bi bi-credit-card"></i>
                     <span>Transaksi</span>
                 </a>
             </li><!-- End Transaksi Page Nav -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="laporan.php">
-                    <i class="bi bi-file-earmark-bar-graph"></i>
+                    <i class="bi bi-journal-text"></i>
                     <span>Laporan</span>
                 </a>
             </li><!-- End Laporan Page Nav -->
             <li class="nav-item">
                 <a class="nav-link" href="pengguna.php">
-                    <i class="bi bi-people"></i>
+                    <i class="bi bi-person-fill"></i>
                     <span>Pengguna</span>
                 </a>
             </li><!-- End Pengguna Page Nav -->
         </ul>
 
     </aside><!-- End Sidebar-->
+ <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="index.php">
+                    <i class="bi bi-house-door"></i>
+                    <span>Beranda</span>
+                </a>
+            </li><!-- End Beranda Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="kategori.php">
+                    <i class="bi bi-handbag"></i>
+                    <span>Kategori Produk</span>
+                </a>
+            </li><!-- End Kategori Produk Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="produk.php">
+                    <i class="bi bi-box-seam-fill"></i>
+                    <span>Produk</span>
+                </a>
+            </li><!-- End Produk Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="keranjang.php">
+                    <i class="bi bi-cart4"></i>
+                    <span>Keranjang</span>
+                </a>
+            </li><!-- End Keranjang Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="transaksi.php">
+                    <i class="bi bi-credit-card"></i>
+                    <span>Transaksi</span>
+                </a>
+            </li><!-- End Transaksi Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="laporan.php">
+                    <i class="bi bi-journal-text"></i>
+                    <span>Laporan</span>
+                </a>
+            </li><!-- End Laporan Page Nav -->
+            <li class="nav-item">
+                <a class="nav-link" href="pengguna.php">
+                    <i class="bi bi-person-fill"></i>
+                    <span>Pengguna</span>
+                </a>
+            </li><!-- End Pengguna Page Nav -->
+        </ul>
+
+    </aside><!-- End Sidebar-->
+
 
     <main id="main" class="main">
 
@@ -234,17 +290,16 @@ if (isset($_POST['simpan'])) {
         </section>
 
     </main><!-- End #main -->
-
-    <!-- ======= Footer ======= -->
+<!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">
-            &copy; Copyright <strong><span>Furnimart</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>IP_Store</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Designed by <a href="https://instagram.com/dea.salsa.503/" target="_blank">Dea Salsabilla</a>
+            Designed by <a href="https://www.instagram.com/ya.putri_?igsh=azk4dHlwYmNpZGs=
+            " target="_blank">IkaPutriRachmawati</a>
         </div>
     </footer><!-- End Footer -->
-
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
