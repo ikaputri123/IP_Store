@@ -1,35 +1,9 @@
 <?php
-session_start();
 
-require "admin/koneksi.php";
-
-if (isset($_POST["login"])) {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-
-    $result = mysqli_query($koneksi, "SELECT * FROM tb_user WHERE username='$username'");
-
-
-    //cek username
-    if (mysqli_num_rows($result) === 1) {
-
-        //cek password
-        $row = mysqli_fetch_assoc($result);
-
-        if (password_verify($password, $row["password"])) {
-
-            //set session
-            $_SESSION["login"] = true;
-            $_SESSION["username"] = $row["username"];
-            $_SESSION["status"] = $row["status"];
-            header("refresh:0; url=index.php");
-        } else {
-            echo "<script>alert('username atau password yang anda masukkan salah')</script>";
-        }
-    } else {
-        echo "<script>alert('username atau password yang anda masukkan salah')</script>";
-    }
-}
+require 'admin/koneksi.php';
+require 'function.php';
+$sql = mysqli_query($koneksi, "select * from tb_user");
+$data = mysqli_fetch_array($sql);
 ?>
 
 <!doctype html>
@@ -40,7 +14,7 @@ if (isset($_POST["login"])) {
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Login - IP_Store</title>
+    <title>Register - IP_Store</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -80,6 +54,17 @@ if (isset($_POST["login"])) {
 </head>
 
 <body>
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (registrasi($_POST)) {
+            echo "<script>alert('user baru berhasil ditambahkan');";
+            echo "window.location.href = 'login.php';</script>";
+            exit;
+        } else {
+            echo "<script>alert('Registrasi gagal');</script>";
+        }
+    }
+    ?>
     <!--[if lt IE 8]>
 		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 	<![endif]-->
@@ -237,8 +222,8 @@ if (isset($_POST["login"])) {
             <div class="container">
                 <div class="breadcrumb-content">
                     <ul>
-                        <li><a href="index.html">Beranda</a></li>
-                        <li class="active">Login</li>
+                        <li><a href="index.php">Beranda</a></li>
+                        <li class="active">Register</li>
                     </ul>
                 </div>
             </div>
@@ -249,36 +234,38 @@ if (isset($_POST["login"])) {
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">
-                        <!-- Login Form s-->
-                        <form action="#" method="post">
-                            <div class="login-form">
-                                <h4 class="login-title">Login</h4>
-                                <div class="row">
-                                    <div class="col-md-12 col-12 mb-20">
-                                        <label>Username</label>
-                                        <input class="mb-0" type="text" name="username" placeholder="Masukkan Usename">
-                                    </div>
-                                    <div class="col-12 mb-20">
-                                        <label>Password</label>
-                                        <input class="mb-0" type="password" name="password" placeholder="Masukan Password">
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <button class="register-button mt-0" name="login">Login</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">
                         <!-- Banner Image -->
                         <div class="banner-wrapper text-center">
                             <img src="images/bg-banner/4.png" alt="Banner Toko Elektronik" class="img-fluid" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width: 100%;">
                             <p class="mt-3" style="font-size: 16px; color: #555;">
                                 Temukan smartphone, tablet, laptop, dan produk elektronik terbaik hanya di IP_Store!<br>
-                                <a href="register.php" style="color: #007bff; text-decoration: underline;">Belum punya akun? Register di sini.</a>
+                                <a href="login.php" style="color: #007bff; text-decoration: underline;">Sudah punya akun? Login di sini.</a>
                             </p>
                         </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
+                        <form action="#" method="post">
+                            <div class="login-form">
+                                <h4 class="login-title">Register</h4>
+                                <div class="row">
+                                    <div class="col-md-12 mb-20">
+                                        <label>Username</label>
+                                        <input class="mb-0" type="text" name="username" placeholder="Masukkan Username">
+                                    </div>
+                                    <div class="col-md-6 mb-20">
+                                        <label>Password</label>
+                                        <input class="mb-0" type="password" name="password" placeholder="Masukkan Password">
+                                    </div>
+                                    <div class="col-md-6 mb-20">
+                                        <label>Konfirmasi Password</label>
+                                        <input class="mb-0" type="password" name="password2" placeholder="Confirm Password">
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="register-button mt-0" name="register">Register</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
