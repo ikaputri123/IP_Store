@@ -44,21 +44,22 @@ if (isset($_POST['update'])) {
   }else{
     $imgnewfile = $gambar_lama; // jika tidak ada gambar baru,gunakan gambar lama
 }
-$id = $_GET['id'];
-$sql = mysqli_query($koneksi,  "SELECT * FROM tb_kategori WHERE id_kategori ='$id'");
-$data = mysqli_fetch_array($sql);
+// update ke database
+$query = mysqli_query($koneksi, "UPDATE tb_produk SET
+nm_produk = '$nm_produk',
+harga = '$harga',
+stok = '$stok',
+ket = '$desk',
+id_kategori = '$id_kategori',
+size = '$size',
+gambar = '$imgnewfile'
+WHERE id_produk = '$id_produk'");
 
-if (isset($_POST['simpan'])) {
-    $nm_kategori = $_POST['nm_kategori'];
-
-    $query = mysqli_query($koneksi, "UPDATE tb_kategori SET nm_kategori = '$nm_kategori' WHERE id_kategori = '$id'");
-    if ($query) {
-        echo "<script>alert('Data Berhasil Diubah')</script>";
-        header("refresh:0, kategori.php");
-    } else {
-        echo "<script>alert('Data Gagal Diubah')</script>";
-        header("refresh:0, kategori.php");
-    }
+if ($query) {
+    echo "<script>alert('Produk berhasil diperbarui!'); window.location='produk.php';</script>";
+} else {
+    echo "<script>alert('gagal memperbarui produk!'); window.location='produk.php';</script>";
+}
 }
 ?>
 <!DOCTYPE html>
@@ -240,6 +241,13 @@ if (isset($_POST['simpan'])) {
                                     <label for="id_kategori" class="form-label">Kategori</label>
                                     <select class="form-control" id="id_kategori" name="id_kategori" required>
                                         <option value="">-- Pilih Kategori --</option>
+                                        <?php
+                                        include "koneksi.php";
+                                        $query = mysqli_query($koneksi, "SELECT * FROM tb_kategori");
+                                        while ($kategori = mysqli_fetch_array($query)) {
+                                            echo "<option value='{$kategori['id_kategori']}'>{$kategori['nm_kategori']}</option>";
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="col-12">

@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+require "admin/koneksi.php";
+
+if (isset($_POST["login"])) {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    $result 
+}
 <!doctype html>
 <html class="no-js" lang="zxx">
     
@@ -5,7 +16,7 @@
 <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Login Register || limupa - Digital Products Store eCommerce Bootstrap 4 Template</title>
+        <title>Login -  IP_Store</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->

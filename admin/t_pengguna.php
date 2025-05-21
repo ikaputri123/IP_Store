@@ -5,7 +5,7 @@ include "koneksi.php";
 // Cek apakah sudah login
 if (!isset($_SESSION["login"])) {
     header("Location: login.php");
-    exit;
+   exit;
 }
 
 // Cek apakah status tersedia dan pastikan user adalah admin
@@ -256,13 +256,13 @@ if (isset($_POST['simpan'])) {
                             <form class="row g-3 mt-2" method="post">
                                 <!-- Username -->
                                 <div class="col-12">
-                                    <label for="username" class="form-label">Username</label>
+                                    <label for="username" class="form-label">username</label>
                                     <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username" maxlength="100" required>
                                 </div>
 
                                 <!-- Password -->
                                 <div class="col-12">
-                                    <label for="password" class="form-label">Password</label>
+                                    <label for="password" class="form-label">password</label>
                                     <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan Password" required>
                                 </div>
 

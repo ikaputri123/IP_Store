@@ -4,10 +4,9 @@ include "koneksi.php";
 
 // Cek apakah sudah login
 if (!isset($_SESSION["login"])) {
-    header("Location: login.php");
-    exit;
+   header("Location: login.php");
+   exit;
 }
-
 // Cek apakah status tersedia dan pastikan user adalah admin
 if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
     echo "<script>
@@ -57,7 +56,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
-            <a href="index.html" class="logo d-flex align-items-center">
+            <a href="index.php" class="logo d-flex align-items-center">
                 <img src="assets/img/logo.png" alt="">
                 <span class="d-none d-lg-block">IP_Store</span>
             </a>
