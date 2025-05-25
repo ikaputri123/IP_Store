@@ -1,46 +1,15 @@
 <?php
 session_start();
-
-require "admin/koneksi.php";
-
-if (isset($_POST["login"])) {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-
-    $result = mysqli_query($koneksi, "SELECT * FROM tb_user WHERE username='$username'");
-
-
-    //cek username
-    if (mysqli_num_rows($result) === 1) {
-
-        //cek password
-        $row = mysqli_fetch_assoc($result);
-
-        if (password_verify($password, $row["password"])) {
-
-            //set session
-            $_SESSION["login"] = true;
-            $_SESSION["username"] = $row["username"];
-            $_SESSION["status"] = $row["status"];
-            header("refresh:0; url=index.php");
-        } else {
-            echo "<script>alert('username atau password yang anda masukkan salah')</script>";
-        }
-    } else {
-        echo "<script>alert('username atau password yang anda masukkan salah')</script>";
-    }
-}
 ?>
-
 <!doctype html>
 <html class="no-js" lang="zxx">
 
-<!-- login-register31:27-->
+<!-- shopping-cart31:32-->
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Login - IP_Store</title>
+    <title>Keranjang - IP_Store</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -87,6 +56,9 @@ if (isset($_POST["login"])) {
     <div class="body-wrapper">
         <!-- Begin Header Area -->
         <header class="li-header-4">
+            <!-- Begin Header Top Area -->
+
+            <!-- Header Top Area End Here -->
             <!-- Begin Header Middle Area -->
             <div class="header-middle pl-sm-0 pr-sm-0 pl-xs-0 pr-xs-0">
                 <div class="container">
@@ -95,7 +67,7 @@ if (isset($_POST["login"])) {
                         <div class="col-lg-3">
                             <div class="logo pb-sm-30 pb-xs-30">
                                 <a href="index.php">
-                                    <h1>IP_Store</h1>
+                                    <h1>IP Store</h1>
                                 </a>
                             </div>
                         </div>
@@ -140,7 +112,6 @@ if (isset($_POST["login"])) {
                                                 </li>
                                             </ul>
                                         </li>
-
 
                                         <!-- Mini Cart -->
                                         <li class="hm-minicart">
@@ -192,6 +163,7 @@ if (isset($_POST["login"])) {
                                     <?php } ?>
                                 </ul>
                             </div>
+
                             <!-- Header Middle Right Area End Here -->
                         </div>
                         <!-- Header Middle Right Area End Here -->
@@ -221,7 +193,7 @@ if (isset($_POST["login"])) {
             </div>
             <!-- Header Bottom Area End Here -->
             <!-- Begin Mobile Menu Area -->
-            <div class="mobile-menu-area d-lg-none d-xl-none col-12">
+            <div class="mobile-menu-area mobile-menu-area-4 d-lg-none d-xl-none col-12">
                 <div class="container">
                     <div class="row">
                         <div class="mobile-menu">
@@ -237,53 +209,261 @@ if (isset($_POST["login"])) {
             <div class="container">
                 <div class="breadcrumb-content">
                     <ul>
-                        <li><a href="index.html">Beranda</a></li>
-                        <li class="active">Login</li>
+                        <li><a href="index.php">Beranda</a></li>
+                        <li class="active">Keranjang</li>
                     </ul>
                 </div>
             </div>
         </div>
         <!-- Li's Breadcrumb Area End Here -->
-        <!-- Begin Login Content Area -->
-        <div class="page-section mb-60">
+        <!--Shopping Cart Area Strat-->
+        <div class="Shopping-cart-area pt-60 pb-60">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">
-                        <!-- Login Form s-->
-                        <form action="#" method="post">
-                            <div class="login-form">
-                                <h4 class="login-title">Login</h4>
-                                <div class="row">
-                                    <div class="col-md-12 col-12 mb-20">
-                                        <label>Username</label>
-                                        <input class="mb-0" type="text" name="username" placeholder="Masukkan Usename">
-                                    </div>
-                                    <div class="col-12 mb-20">
-                                        <label>Password</label>
-                                        <input class="mb-0" type="password" name="password" placeholder="Masukan Password">
-                                    </div>
+                    <div class="col-12">
+                        <?php
+                        include "admin/koneksi.php";
 
-                                    <div class="col-md-12">
-                                        <button class="register-button mt-0" name="login">Login</button>
+                        if (isset($_POST['update_cart'])) {
+                            if (!isset($_SESSION['id_user'])) {
+                                echo "<script>alert('User tidak ditemukan!'); window.location='cart.php';</script>";
+                                exit;
+                            }
+
+                            $id_user = $_SESSION['id_user'];
+
+                            // Pastikan data qty tersedia
+                            if (isset($_POST['qty']) && is_array($_POST['qty'])) {
+                                foreach ($_POST['qty'] as $id_pesanan => $qty) {
+                                    $qty = (int)$qty;
+                                    if ($qty < 1) $qty = 1;
+
+                                    // Ambil harga produk terkait dari join tabel
+                                    $query = mysqli_query($koneksi, "SELECT pr.harga 
+                                        FROM tb_pesanan p 
+                                        JOIN tb_produk pr ON p.id_produk = pr.id_produk 
+                                        WHERE p.id_pesanan = '$id_pesanan' AND p.id_user = '$id_user'
+                                    ");
+                                    $data = mysqli_fetch_assoc($query);
+                                    $harga = $data['harga'];
+                                    $total = $qty * $harga;
+
+                                    // Update qty dan total
+                                    mysqli_query($koneksi, "UPDATE tb_pesanan 
+                                        SET qty = '$qty', total = '$total' 
+                                        WHERE id_pesanan = '$id_pesanan' AND id_user = '$id_user'
+                                    ");
+                                }
+                            }
+
+                            echo "<script>alert('Keranjang berhasil diperbarui.'); window.location='cart.php';</script>";
+                            exit;
+                        }
+
+
+                        if (isset($_POST['checkout'])) {
+                            if (!isset($_SESSION['id_user'])) {
+                                echo "<script>alert('User tidak ditemukan!'); window.location='cart.php';</script>";
+                                exit;
+                            }
+
+                            $id_user = $_SESSION['id_user'];
+
+                            // Ambil data pesanan user
+                            $query_pesanan = mysqli_query($koneksi, "SELECT p.*, pr.harga 
+                                FROM tb_pesanan p
+                                JOIN tb_produk pr ON p.id_produk = pr.id_produk
+                                WHERE p.id_user = '$id_user'
+                            ");
+
+                            if (!$query_pesanan || mysqli_num_rows($query_pesanan) == 0) {
+                                echo "<script>alert('Keranjang kosong atau gagal mengambil data pesanan!'); window.location='cart.php';</script>";
+                                exit;
+                            }
+
+                            // Hitung subtotal dan siapkan item
+                            $subtotal = 0;
+                            $items = [];
+                            while ($row = mysqli_fetch_assoc($query_pesanan)) {
+                                $total = $row['qty'] * $row['harga'];
+                                $subtotal += $total;
+                                $items[] = [
+                                    'id_produk' => $row['id_produk'],
+                                    'qty' => $row['qty'],
+                                    'harga' => $total
+                                ];
+                            }
+
+                            // Hitung diskon dan total bayar
+                            $diskon = 0;
+                            if ($subtotal > 3000000) {
+                                $diskon = 0.07 * $subtotal;
+                            } elseif ($subtotal > 1500000) {
+                                $diskon = 0.05 * $subtotal;
+                            }
+                            $total_bayar = $subtotal - $diskon;
+
+                            // Generate id_jual otomatis (format T001, T002, dst)
+                            $result = mysqli_query($koneksi, "SELECT MAX(RIGHT(id_jual, 3)) AS max_id FROM tb_jual");
+                            $row = mysqli_fetch_assoc($result);
+                            $last_id = $row['max_id'];
+                            $next_id = 'T' . str_pad((int)$last_id + 1, 3, '0', STR_PAD_LEFT);
+
+                            // Insert ke tb_jual
+                            $tgl = date('Y-m-d H:i:s');
+                            $query_insert_jual = mysqli_query($koneksi, "INSERT INTO tb_jual (id_jual, id_user, tgl_jual, total, diskon) 
+                                VALUES ('$next_id', '$id_user', '$tgl', '$total_bayar', '$diskon')");
+
+                            if (!$query_insert_jual) {
+                                echo "<script>alert('Gagal menyimpan data penjualan!'); window.location='cart.php';</script>";
+                                exit;
+                            }
+
+                            // Insert ke tb_jualdtl
+                            foreach ($items as $item) {
+                                $query_dtl = mysqli_query($koneksi, "INSERT INTO tb_jualdtl (id_jual, id_produk, qty, harga) 
+                                    VALUES ('$next_id', '{$item['id_produk']}', '{$item['qty']}', '{$item['harga']}')");
+
+                                if (!$query_dtl) {
+                                    echo "<script>alert('Gagal menyimpan detail penjualan!'); window.location='cart.php';</script>";
+                                    exit;
+                                }
+                            }
+
+                            // Hapus data pesanan user
+                            $hapus = mysqli_query($koneksi, "DELETE FROM tb_pesanan WHERE id_user = '$id_user'");
+
+                            if (!$hapus) {
+                                echo "<script>alert('Gagal menghapus keranjang!'); window.location='cart.php';</script>";
+                                exit;
+                            }
+
+                            echo "<script>alert('Checkout berhasil!'); window.location='cart.php';</script>";
+                        }
+
+                        ?>
+
+
+                        <form method="post" action="">
+                            <div class="table-content table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="li-product-remove">Hapus</th>
+                                            <th class="li-product-thumbnail">Gambar</th>
+                                            <th class="cart-product-name">Produk</th>
+                                            <th class="li-product-price">Harga</th>
+                                            <th class="li-product-quantity">Jumlah</th>
+                                            <th class="li-product-subtotal">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        include 'admin/koneksi.php';
+
+                                        // Cek apakah user login
+                                        if (!isset($_SESSION['username'])) {
+                                            echo "<tr><td colspan='6'>Silakan login terlebih dahulu.</td></tr>";
+                                            exit;
+                                        }
+
+                                        $username = $_SESSION['username'];
+
+                                        // Ambil id_user dari username
+                                        $query_user = mysqli_query($koneksi, "SELECT id_user FROM tb_user WHERE username = '$username'");
+                                        $data_user = mysqli_fetch_assoc($query_user);
+                                        $id_user = $data_user['id_user'];
+
+                                        // Ambil data pesanan berdasarkan id_user
+                                        $query_pesanan = mysqli_query($koneksi, "SELECT p.*, pr.nm_produk, pr.gambar, pr.harga 
+    FROM tb_pesanan p
+    JOIN tb_produk pr ON p.id_produk = pr.id_produk
+    WHERE p.id_user = '$id_user'
+");
+
+                                        if (mysqli_num_rows($query_pesanan) > 0) {
+                                            while ($row = mysqli_fetch_assoc($query_pesanan)) {
+                                                $subtotal = $row['qty'] * $row['harga'];
+                                                echo "<tr>
+            <td class='li-product-remove'>
+                <a href='hapus_pesanan.php?id={$row['id_pesanan']}' onclick='return confirm(\"Yakin hapus item ini?\")'>
+                    <i class='fa fa-times'></i>
+                </a>
+            </td>
+            <td class='li-product-thumbnail'>
+                <a href='#'><img src='admin/produk_img/{$row['gambar']}' alt='{$row['nm_produk']}' width='70'></a>
+            </td>
+            <td class='li-product-name'><a href='#'>{$row['nm_produk']}</a></td>
+            <td class='li-product-price'><span class='amount'>Rp" . number_format($row['harga'], 0, ',', '.') . "</span></td>
+            <td class='quantity'>
+                <label>Quantity</label>
+                <div class='cart-plus-minus'>
+                <input name='qty[{$row['id_pesanan']}]' class='cart-plus-minus-box' value='{$row['qty']}' type='number' min='1'>
+                    <div class='dec qtybutton'><i class='fa fa-angle-down'></i></div>
+                    <div class='inc qtybutton'><i class='fa fa-angle-up'></i></div>
+                </div>
+            </td>
+            <td class='product-subtotal'>
+                <span class='amount'>Rp" . number_format($subtotal, 0, ',', '.') . "</span>
+            </td>
+        </tr>";
+                                            }
+                                        } else {
+                                            echo "<tr><td colspan='6'>Keranjang kosong.</td></tr>";
+                                        }
+                                        ?>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="coupon-all">
+                                        <div class="coupon2">
+                                            <input class="button" name="update_cart" value="Update cart" type="submit">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5 ml-auto">
+                                    <div class="cart-page-total">
+                                        <h2>Total Pesanan</h2>
+                                        <?php
+                                        // Hitung ulang subtotal
+                                        $subtotal = 0;
+                                        mysqli_data_seek($query_pesanan, 0); // kembalikan ke baris awal jika query sebelumnya sudah digunakan
+                                        while ($row = mysqli_fetch_assoc($query_pesanan)) {
+                                            $subtotal += $row['qty'] * $row['harga'];
+                                        }
+
+                                        // Hitung diskon
+                                        $diskon = 0;
+                                        if ($subtotal > 3000000) {
+                                            $diskon = 0.07 * $subtotal;
+                                        } elseif ($subtotal > 1500000) {
+                                            $diskon = 0.05 * $subtotal;
+                                        }
+
+                                        $total_bayar = $subtotal - $diskon;
+                                        ?>
+
+                                        <ul>
+                                            <li>Subtotal <span>Rp <?= number_format($subtotal, 0, ',', '.') ?></span></li>
+                                            <li>Diskon <span>Rp <?= number_format($diskon, 0, ',', '.') ?></span></li>
+                                            <li>Total <span>Rp <?= number_format($total_bayar, 0, ',', '.') ?></span></li>
+                                        </ul>
+
+                                        <button type="submit" name="checkout" class="btn btn-dark mt-3">Checkout</button>
                                     </div>
                                 </div>
                             </div>
                         </form>
                     </div>
-                    <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">
-                        <!-- Banner Image -->
-                        <div class="banner-wrapper text-center">
-                            <img src="images/bg-banner/laptop.jpg" alt="Banner Toko Elektronik" class="img-fluid" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width: 100%;">
-                            <p class="mt-3" style="font-size: 16px; color: #555;">
-                                Temukan smartphone, tablet, laptop, dan produk elektronik terbaik hanya di IP_Store!<br>
-                                <a href="register.php" style="color: #007bff; text-decoration: underline;">Belum punya akun? Register di sini.</a>
-                            </p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-        <!-- Login Content Area End Here -->
+        <!--Shopping Cart Area End-->
         <!-- Begin Footer Area -->
         <div class="footer">
             <!-- Begin Footer Static Top Area -->
@@ -454,7 +634,6 @@ if (isset($_POST["login"])) {
             <!-- Footer Static Bottom Area End Here -->
         </div>
         <!-- Footer Area End Here -->
-    </div>
     <!-- Body Wrapper End Here -->
     <!-- jQuery-V1.12.4 -->
     <script src="js/vendor/jquery-1.12.4.min.js"></script>
@@ -500,6 +679,6 @@ if (isset($_POST["login"])) {
     <script src="js/main.js"></script>
 </body>
 
-<!-- login-register31:27-->
+<!-- shopping-cart31:32-->
 
 </html>
