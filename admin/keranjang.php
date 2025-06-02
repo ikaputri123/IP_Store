@@ -191,7 +191,7 @@
                                 </select>
                                 <button type="submit" class="btn btn-primary ms-2">Filter</button>
                             </form>
-                        </div>
+                        </div><!-- End Filter Bar -->
                     </div>
                 </div>
             </div>
@@ -209,7 +209,7 @@
 
                             // Query untuk mengambil data pesanan dengan join ke produk dan kategori
                             $sql = "SELECT p.id_pesanan, p.id_produk, p.qty, p.total, u.username FROM tb_pesanan p JOIN tb_user u ON p.id_user = u.id_user JOIN tb_produk pr ON p.id_produk = pr.id_produk JOIN tb_kategori k ON pr.id_kategori = k.id_kategori";
-
+                        
                             if(!empty($filter_kategori)){
                                 $sql .= " WHERE k.id_kategori = '$filter_kategori'";
                             }
