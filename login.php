@@ -21,6 +21,7 @@ if (isset($_POST["login"])) {
             //set session
             $_SESSION["login"] = true;
             $_SESSION["username"] = $row["username"];
+            $_SESSION["id_user"] = $row["id_user"];
             $_SESSION["status"] = $row["status"];
             header("refresh:0; url=index.php");
         } else {

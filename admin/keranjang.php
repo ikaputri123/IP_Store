@@ -98,7 +98,7 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link " href="index.php">
+                <a class="nav-link collapsed" href="index.php">
                     <i class="bi bi-house-door"></i>
                     <span>Beranda</span>
                 </a>
@@ -119,7 +119,7 @@
             </li><!-- End Produk Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="keranjang.php">
+                <a class="nav-link" href="keranjang.php">
                     <i class="bi bi-cart4"></i>
                     <span>Keranjang</span>
                 </a>

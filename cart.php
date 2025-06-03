@@ -386,7 +386,7 @@ session_start();
                                                 $subtotal = $row['qty'] * $row['harga'];
                                                 echo "<tr>
             <td class='li-product-remove'>
-                <a href='hapus_pesanan.php?id={$row['id_pesanan']}' onclick='return confirm(\"Yakin hapus item ini?\")'>
+                <a href='hapus-pesanan.php?id={$row['id_pesanan']}' onclick='return confirm(\"Yakin hapus item ini?\")'>
                     <i class='fa fa-times'></i>
                 </a>
             </td>

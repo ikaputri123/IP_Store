@@ -153,7 +153,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
             </li><!-- End Laporan Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="penguuna.php">
+                <a class="nav-link collapsed" href="pengguna.php">
                     <i class="bi bi-person-fill"></i>
                     <span>Pengguna</span>
                 </a>

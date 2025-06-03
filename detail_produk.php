@@ -233,7 +233,7 @@ session_start();
                         <div class="product-details-left">
                             <div class="product-details-images slider-navigation-1">
                                 <div class="lg-image">
-                                    <a class="popup-img venobox vbox-item" href="admin/produk_img/<?= $data ['gambar'] ?>" data-gall="myGallery">
+                                    <a class="popup-img venobox vbox-item" href="admin/produk_img/<?= $data['gambar'] ?>" data-gall="myGallery">
                                         <img src="admin/produk_img/<?= $data['gambar'] ?>" alt="<?= $data['nm_produk'] ?>" width="300" height="300">
                                     </a>
                                 </div>
@@ -246,7 +246,7 @@ session_start();
                             alert('Stok produk ini sudah habis.');
                             window.location.href = 'belanja.php';
                         </script>
-                        <?php endif; ?>
+                    <?php endif; ?>
 
                     <div class="col-lg-7 col-md-6">
                         <div class="product-details-view-content pt-60">
@@ -266,14 +266,20 @@ session_start();
                                     </p>
                                 </div>
                                 <div class="single-add-to-cart">
-                                    <form action="tambah_ke_keranjang.php" method="POST" class="cart-quantity">
+                                    <form action="tambah-ke-keranjang.php" method="POST" class="cart-quantity">
                                         <input type="hidden" name="id_produk" value="<?= $data['id_produk'] ?>">
                                         <input type="hidden" name="id_user" value="<?= $_SESSION['id_user'] ?>">
                                         <input type="hidden" name="harga" value="<?= $data['harga'] ?>">
                                         <input type="hidden" name="redirect_url" value="<?= $_SERVER['REQUEST_URI'] ?>">
-                                        <div class="quatuty">
+                                        <div class="quantity">
                                             <label>Jumlah</label>
+                                            <div class="cart-plus-minus">
+                                                <input class="cart-plus-minus-box" name="jumlah" id="input-jumlah" value="1" type="text">
+                                                <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
+                                                <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
+                                            </div>
                                         </div>
+
                                         <button class="add-to-cart" type="submit">Beli Sekarang</button>
                                     </form>
                                 </div>
@@ -335,46 +341,46 @@ session_start();
 
                                 $query_produk_lain = mysqli_query($koneksi, "SELECT * FROM tb_produk WHERE id_produk != '$id_produk' ORDER BY RAND() LIMIT 6");
                                 while ($p = mysqli_fetch_array($query_produk_lain)) {
-                                    ?>
-                            
-                                <div class="col-lg-12">
-                                    <!-- single-product-wrap start -->
-                                    <div class="single-product-wrap">
-                                        <div class="product-image">
-                                            <a href="detail_produk.php?id_produk=<?= $p['id_produk'] ?>">
-                                                <img src="admin/produk_img/<?= $p['gambar'] ?>" alt="<?= $p['nm_produk'] ?>" width="300" height="300">
-                                            </a>
-                                        </div>
-                                        <div class="product_desc">
-                                            <div class="product_desc_info">
-                                                <div class="product-review">
-                                                    <h5 class="manufacturer">
-                                                        <a href="#"><?= $p['id_kategori'] ?></a>
-                                                    </h5>
-                                                </div>
-                                                <h4><a class="product_name" href="detail_produk.php?id_produk=<?= $p['id_produk'] ?>">
-                                                    <?= $p['nm_produk'] ?>
+                                ?>
+
+                                    <div class="col-lg-12">
+                                        <!-- single-product-wrap start -->
+                                        <div class="single-product-wrap">
+                                            <div class="product-image">
+                                                <a href="detail_produk.php?id_produk=<?= $p['id_produk'] ?>">
+                                                    <img src="admin/produk_img/<?= $p['gambar'] ?>" alt="<?= $p['nm_produk'] ?>" width="300" height="300">
                                                 </a>
-                                                </h4>
-                                                <div class="price-box">
-                                                    <span class="new-price">Rp<?= number_format($p['harga'], 0, ',', '.') ?></span>
+                                            </div>
+                                            <div class="product_desc">
+                                                <div class="product_desc_info">
+                                                    <div class="product-review">
+                                                        <h5 class="manufacturer">
+                                                            <a href="#"><?= $p['id_kategori'] ?></a>
+                                                        </h5>
+                                                    </div>
+                                                    <h4><a class="product_name" href="detail_produk.php?id_produk=<?= $p['id_produk'] ?>">
+                                                            <?= $p['nm_produk'] ?>
+                                                        </a>
+                                                    </h4>
+                                                    <div class="price-box">
+                                                        <span class="new-price">Rp<?= number_format($p['harga'], 0, ',', '.') ?></span>
+                                                    </div>
+                                                </div>
+                                                <div class="add-actions">
+                                                    <ul class="add-actions-link">
+                                                        <li class="add-cart active">
+                                                            <a href="detail_produk.php?id_produk=<?= $p['id_produk'] ?>">Beli Sekarang</a>
+                                                        <li>
+                                                            <a href="detail_produk.php?id_produk=<?= $p['id_produk'] ?>" title="Quick View" class="quick-view-btn">
+                                                                <i class="fa fa-eye"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
                                                 </div>
                                             </div>
-                                            <div class="add-actions">
-                                                <ul class="add-actions-link">
-                                                    <li class="add-cart active">
-                                                        <a href="detail_produk.php?id_produk=<?= $p['id_produk'] ?>">Beli Sekarang</a>
-                                                    <li>
-                                                        <a href="detail_produk.php?id_produk=<?= $p['id_produk'] ?>"title="Quick View" class="quick-view-btn">
-                                                            <i class="fa fa-eye"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
                                         </div>
+                                        <!-- single-product-wrap end -->
                                     </div>
-                                    <!-- single-product-wrap end -->
-                                </div>
                                 <?php } ?>
                             </div>
                         </div>
