@@ -3,89 +3,135 @@ session_start();
 ?>
 <!doctype html>
 <html class="no-js" lang="zxx">
-    
-<!-- shopping-cart31:32-->
+
+<!-- contact32:04-->
+
 <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Hubungi Kami || IP_Store</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
-        <!-- Material Design Iconic Font-V2.2.0 -->
-        <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-        <!-- Font Awesome Stars-->
-        <link rel="stylesheet" href="css/fontawesome-stars.css">
-        <!-- Meanmenu CSS -->
-        <link rel="stylesheet" href="css/meanmenu.css">
-        <!-- owl carousel CSS -->
-        <link rel="stylesheet" href="css/owl.carousel.min.css">
-        <!-- Slick Carousel CSS -->
-        <link rel="stylesheet" href="css/slick.css">
-        <!-- Animate CSS -->
-        <link rel="stylesheet" href="css/animate.css">
-        <!-- Jquery-ui CSS -->
-        <link rel="stylesheet" href="css/jquery-ui.min.css">
-        <!-- Venobox CSS -->
-        <link rel="stylesheet" href="css/venobox.css">
-        <!-- Nice Select CSS -->
-        <link rel="stylesheet" href="css/nice-select.css">
-        <!-- Magnific Popup CSS -->
-        <link rel="stylesheet" href="css/magnific-popup.css">
-        <!-- Bootstrap V4.1.3 Fremwork CSS -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <!-- Helper CSS -->
-        <link rel="stylesheet" href="css/helper.css">
-        <!-- Main Style CSS -->
-        <link rel="stylesheet" href="style.css">
-        <!-- Responsive CSS -->
-        <link rel="stylesheet" href="css/responsive.css">
-        <!-- Modernizr js -->
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-    </head>
-    <body>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Hubungi Kami - IP_Store</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/logo2.png">
+    <!-- Material Design Iconic Font-V2.2.0 -->
+    <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Font Awesome Stars-->
+    <link rel="stylesheet" href="css/fontawesome-stars.css">
+    <!-- Meanmenu CSS -->
+    <link rel="stylesheet" href="css/meanmenu.css">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" href="css/slick.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- Jquery-ui CSS -->
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <!-- Venobox CSS -->
+    <link rel="stylesheet" href="css/venobox.css">
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="css/nice-select.css">
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <!-- Bootstrap V4.1.3 Fremwork CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Helper CSS -->
+    <link rel="stylesheet" href="css/helper.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Modernizr js -->
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body>
     <!--[if lt IE 8]>
 		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 	<![endif]-->
-        <!-- Begin Body Wrapper -->
-        <div class="body-wrapper">
-            <!-- Begin Header Area -->
-            <header class="li-header-4">
-                <!-- Begin Header Top Area -->
-                
-                <!-- Header Top Area End Here -->
-                <!-- Begin Header Middle Area -->
-                <div class="header-middle pl-sm-0 pr-sm-0 pl-xs-0 pr-xs-0">
-                    <div class="container">
-                        <div class="row">
-                            <!-- Begin Header Logo Area -->
-                            <div class="col-lg-3">
-                                <div class="logo pb-sm-30 pb-xs-30">
-                                    <a href="index.php">
-                                        <h1>IP Store</h1>
-                                    </a>
-                                </div>
+    <!-- Begin Body Wrapper -->
+    <div class="body-wrapper">
+         <!-- Begin Header Area -->
+        <header class="li-header-4">
+            <!-- Begin Header Top Area -->
+            <!-- Header Top Area End Here -->
+            <!-- Begin Header Middle Area -->
+            <div class="header-middle pl-sm-0 pr-sm-0 pl-xs-0 pr-xs-0">
+                <div class="container">
+                    <div class="row">
+                        <!-- Begin Header Logo Area -->
+                        <div class="col-lg-3">
+                            <div class="logo pb-sm-30 pb-xs-30">
+                                <a href="index.php">
+                                    <h1>IP_Store</h1>
+                                </a>
                             </div>
-                            <!-- Header Logo Area End Here -->
+                        </div>
+                        <!-- Header Logo Area End Here -->
+                        <!-- Begin Header Middle Right Area -->
+                        <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
+                            <!-- Begin Header Middle Searchbox Area -->
+                            <form action="" method="GET" class="hm-searchbox">
+                                <select name="kategori" class="nice-select select-search-category">
+                                    <option value="">All</option>
+                                    <?php
+                                    include 'admin/koneksi.php';
+                                    $kategoriQuery = mysqli_query($koneksi, "SELECT * FROM tb_kategori ORDER BY nm_kategori ASC");
+                                    while ($kategori = mysqli_fetch_assoc($kategoriQuery)) {
+                                        $selected = (isset($_GET['kategori']) && $_GET['kategori'] == $kategori['id_kategori']) ? 'selected' : '';
+                                        echo "<option value='{$kategori['id_kategori']}' $selected>{$kategori['nm_kategori']}</option>";
+                                    }
+                                    ?>
+                                </select>
+                                <input type="text" name="keyword" placeholder="Enter your search key ..." value="<?= isset($_GET['keyword']) ? htmlspecialchars($_GET['keyword']) : '' ?>">
+                                <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+
+                            <!-- Header Middle Searchbox Area End Here -->
                             <!-- Begin Header Middle Right Area -->
-                            <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
-                                <!-- Begin Header Middle Searchbox Area -->
-                                
-                                <!-- Begin Header Middle Right Area -->
-                                <div class="header-middle-right">
-                                    <ul class="hm-menu">
-                                        <!-- Begin Header Middle Wishlist Area -->
+                            <div class="header-middle-right">
+                                <ul class="hm-menu">
+                                    <?php
+
+                                    if (!isset($_SESSION['id_user'])) {
+                                    ?>
+                                        <!-- Jika belum login -->
                                         <li class="hm-wishlist">
-                                            <a href="wishlist.html">
-                                                <span class="cart-item-count wishlist-item-count"></span>
+                                            <a href="login.php" title="Login">
                                                 <i class="fa fa-user"></i>
                                             </a>
                                         </li>
-                                        <!-- Header Middle Wishlist Area End Here -->
-                                        <!-- Begin Header Mini Cart Area -->
+                                    <?php
+                                    } else {
+                                        // Ambil nama user dari session atau database jika mau
+                                        $nama_user = $_SESSION['username']; // pastikan diset saat login
+
+                                    ?>
+                                        <!-- User Icon with Dropdown -->
+                                        <li class="hm-wishlist dropdown">
+                                            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fa fa-user"></i>
+                                            </a>
+                                            <ul class="dropdown-menu" style="padding: 10px; min-width: 150px; text-align: center;">
+                                                <li style="padding: 5px 10px; font-weight: bold;">
+                                                    <?= htmlspecialchars($nama_user) ?>
+                                                </li>
+                                                <li>
+                                                    <hr style="margin: 5px 0;">
+                                                </li> <!-- Garis pembatas -->
+                                                <li>
+                                                    <a href="logout.php" style="display: flex; align-items: center; justify-content: center; gap: 5px;">
+                                                        <i class="fa fa-sign-out"></i> Logout
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+
+
+                                        <!-- Mini Cart -->
                                         <li class="hm-minicart">
                                             <div class="hm-minicart-trigger">
                                                 <span class="item-icon"></span>
@@ -98,292 +144,161 @@ session_start();
                                                 <ul class="minicart-product-list">
                                                     <li>
                                                         <a href="single-product.html" class="minicart-product-image">
-                                                            <img src="images/product/small-size/5.jpg" alt="cart products">
+                                                            <img src="images/product/small-size/1.jpg" alt="cart products">
                                                         </a>
                                                         <div class="minicart-product-details">
                                                             <h6><a href="single-product.html">Aenean eu tristique</a></h6>
                                                             <span>£40 x 1</span>
                                                         </div>
-                                                        <button class="close" title="Remove">
+                                                        <button class="close">
                                                             <i class="fa fa-close"></i>
                                                         </button>
                                                     </li>
                                                     <li>
                                                         <a href="single-product.html" class="minicart-product-image">
-                                                            <img src="images/product/small-size/6.jpg" alt="cart products">
+                                                            <img src="images/product/small-size/2.jpg" alt="cart products">
                                                         </a>
                                                         <div class="minicart-product-details">
                                                             <h6><a href="single-product.html">Aenean eu tristique</a></h6>
                                                             <span>£40 x 1</span>
                                                         </div>
-                                                        <button class="close" title="Remove">
+                                                        <button class="close">
                                                             <i class="fa fa-close"></i>
                                                         </button>
                                                     </li>
                                                 </ul>
                                                 <p class="minicart-total">SUBTOTAL: <span>£80.00</span></p>
                                                 <div class="minicart-button">
-                                                    <a href="shopping-cart.html" class="li-button li-button-fullwidth li-button-dark">
+                                                    <a href="cart.php" class="li-button li-button-dark li-button-fullwidth li-button-sm">
                                                         <span>View Full Cart</span>
                                                     </a>
-                                                    <a href="checkout.html" class="li-button li-button-fullwidth">
+                                                    <a href="checkout.html" class="li-button li-button-fullwidth li-button-sm">
                                                         <span>Checkout</span>
                                                     </a>
                                                 </div>
                                             </div>
                                         </li>
-                                        <!-- Header Mini Cart Area End Here -->
-                                    </ul>
-                                </div>
-                                <!-- Header Middle Right Area End Here -->
+                                    <?php } ?>
+                                </ul>
                             </div>
                             <!-- Header Middle Right Area End Here -->
                         </div>
-                    </div>
-                </div>
-                <!-- Header Middle Area End Here -->
-                <!-- Begin Header Bottom Area -->
-                <div class="header-bottom mb-0 header-sticky stick d-none d-lg-block d-xl-block">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <!-- Begin Header Bottom Menu Area -->
-                                <div class="hb-menu">
-                                    <nav>
-                                        <ul>
-                                            <li class="dropdown-holder"><a href="index.html">Beranda</a>
-                                                <ul class="hb-dropdown">
-                                                    <li><a href="index.html">Home One</a></li>
-                                                    <li><a href="index-2.html">Home Two</a></li>
-                                                    <li><a href="index-3.html">Home Three</a></li>
-                                                    <li><a href="index-4.html">Home Four</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="catmenu-dropdown megamenu-holder"><a href="shop-left-sidebar.html">Belanja</a>
-                                                <ul class="megamenu hb-megamenu">
-                                                    <li><a href="shop-left-sidebar.html">Shop Page Layout</a>
-                                                        <ul>
-                                                            <li><a href="shop-3-column.html">Shop 3 Column</a></li>
-                                                            <li><a href="shop-4-column.html">Shop 4 Column</a></li>
-                                                            <li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
-                                                            <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                                            <li><a href="shop-list.html">Shop List</a></li>
-                                                            <li><a href="shop-list-left-sidebar.html">Shop List Left Sidebar</a></li>
-                                                            <li><a href="shop-list-right-sidebar.html">Shop List Right Sidebar</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="single-product-gallery-left.html">Single Product Style</a>
-                                                        <ul>
-                                                            <li><a href="single-product-carousel.html">Single Product Carousel</a></li>
-                                                            <li><a href="single-product-gallery-left.html">Single Product Gallery Left</a></li>
-                                                            <li><a href="single-product-gallery-right.html">Single Product Gallery Right</a></li>
-                                                            <li><a href="single-product-tab-style-top.html">Single Product Tab Style Top</a></li>
-                                                            <li><a href="single-product-tab-style-left.html">Single Product Tab Style Left</a></li>
-                                                            <li><a href="single-product-tab-style-right.html">Single Product Tab Style Right</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="single-product.html">Single Products</a>
-                                                        <ul>
-                                                            <li><a href="single-product.html">Single Product</a></li>
-                                                            <li><a href="single-product-sale.html">Single Product Sale</a></li>
-                                                            <li><a href="single-product-group.html">Single Product Group</a></li>
-                                                            <li><a href="single-product-normal.html">Single Product Normal</a></li>
-                                                            <li><a href="single-product-affiliate.html">Single Product Affiliate</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown-holder"><a href="blog-left-sidebar.html">Hubungi Kami</a>
-                                                <ul class="hb-dropdown">
-                                                    <li class="sub-dropdown-holder"><a href="blog-left-sidebar.html">Blog Grid View</a>
-                                                        <ul class="hb-dropdown hb-sub-dropdown">
-                                                            <li><a href="blog-2-column.html">Blog 2 Column</a></li>
-                                                            <li><a href="blog-3-column.html">Blog 3 Column</a></li>
-                                                            <li><a href="blog-left-sidebar.html">Grid Left Sidebar</a></li>
-                                                            <li><a href="blog-right-sidebar.html">Grid Right Sidebar</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="sub-dropdown-holder"><a href="blog-list-left-sidebar.html">Blog List View</a>
-                                                        <ul class="hb-dropdown hb-sub-dropdown">
-                                                            <li><a href="blog-list.html">Blog List</a></li>
-                                                            <li><a href="blog-list-left-sidebar.html">List Left Sidebar</a></li>
-                                                            <li><a href="blog-list-right-sidebar.html">List Right Sidebar</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="sub-dropdown-holder"><a href="blog-details-left-sidebar.html">Blog Details</a>
-                                                        <ul class="hb-dropdown hb-sub-dropdown">
-                                                            <li><a href="blog-details-left-sidebar.html">Left Sidebar</a></li>
-                                                            <li><a href="blog-details-right-sidebar.html">Right Sidebar</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="sub-dropdown-holder"><a href="blog-gallery-format.html">Blog Format</a>
-                                                        <ul class="hb-dropdown hb-sub-dropdown">
-                                                            <li><a href="blog-audio-format.html">Blog Audio Format</a></li>
-                                                            <li><a href="blog-video-format.html">Blog Video Format</a></li>
-                                                            <li><a href="blog-gallery-format.html">Blog Gallery Format</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                                    <ul class="megamenu hb-megamenu">
-                                                    <li><a href="blog-left-sidebar.html">Blog Layouts</a>
-                                                        <ul>
-                                                            <li><a href="blog-2-column.html">Blog 2 Column</a></li>
-                                                            <li><a href="blog-3-column.html">Blog 3 Column</a></li>
-                                                            <li><a href="blog-left-sidebar.html">Grid Left Sidebar</a></li>
-                                                            <li><a href="blog-right-sidebar.html">Grid Right Sidebar</a></li>
-                                                            <li><a href="blog-list.html">Blog List</a></li>
-                                                            <li><a href="blog-list-left-sidebar.html">List Left Sidebar</a></li>
-                                                            <li><a href="blog-list-right-sidebar.html">List Right Sidebar</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="blog-details-left-sidebar.html">Blog Details Pages</a>
-                                                        <ul>
-                                                            <li><a href="blog-details-left-sidebar.html">Left Sidebar</a></li>
-                                                            <li><a href="blog-details-right-sidebar.html">Right Sidebar</a></li>
-                                                            <li><a href="blog-audio-format.html">Blog Audio Format</a></li>
-                                                            <li><a href="blog-video-format.html">Blog Video Format</a></li>
-                                                            <li><a href="blog-gallery-format.html">Blog Gallery Format</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="index.html">Other Pages</a>
-                                                        <ul>
-                                                            <li><a href="login-register.html">My Account</a></li>
-                                                            <li><a href="checkout.html">Checkout</a></li>
-                                                            <li><a href="compare.html">Compare</a></li>
-                                                            <li><a href="wishlist.html">Wishlist</a></li>
-                                                            <li class="active"><a href="shopping-cart.html">Shopping Cart</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="index.html">Other Pages 2</a>
-                                                        <ul>
-                                                            <li><a href="contact.html">Contact</a></li>
-                                                            <li><a href="about-us.html">About Us</a></li>
-                                                            <li><a href="faq.html">FAQ</a></li>
-                                                            <li><a href="404.html">404 Error</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-    
-                                        </ul>
-                                    </nav>
-                                </div>
-                                <!-- Header Bottom Menu Area End Here -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Header Bottom Area End Here -->
-                <!-- Begin Mobile Menu Area -->
-                <div class="mobile-menu-area d-lg-none d-xl-none col-12">
-                    <div class="container"> 
-                        <div class="row">
-                            <div class="mobile-menu">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Mobile Menu Area End Here -->
-            </header>
-            <!-- Header Area End Here -->
-            <!-- Begin Li's Breadcrumb Area -->
-            <div class="breadcrumb-area">
-                <div class="container">
-                    <div class="breadcrumb-content">
-                        <ul>
-                            <li><a href="index.html">Beranda</a></li>
-                            <li class="active">Hubungi Kami</li>
-                        </ul>
+                        <!-- Header Middle Right Area End Here -->
                     </div>
                 </div>
             </div>
-            <!-- Li's Breadcrumb Area End Here -->
-            <!--Shopping Cart Area Strat-->
-            <div class="Shopping-cart-area pt-60 pb-60">
+            <!-- Header Middle Area End Here -->
+            <!-- Begin Header Bottom Area -->
+            <div class="header-bottom header-sticky stick d-none d-lg-block d-xl-block">
                 <div class="container">
                     <div class="row">
-                        <div class="col-12">
-                            <form action="#">
-                                <div class="table-content table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th class="li-product-remove">Hapus</th>
-                                                <th class="li-product-thumbnail">Gambar</th>
-                                                <th class="cart-product-name">produk</th>
-                                                <th class="li-product-price">Harga</th>
-                                                <th class="li-product-quantity">Jumlah</th>
-                                                <th class="li-product-subtotal">Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="li-product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
-                                                <td class="li-product-thumbnail"><a href="#"><img src="images/product/small-size/5.jpg" alt="Li's Product Image"></a></td>
-                                                <td class="li-product-name"><a href="#">laptop</a></td>
-                                                <td class="li-product-price"><span class="amount">Rp 7.500.000</span></td>
-                                                <td class="quantity">
-                                                    <label>Quantity</label>
-                                                    <div class="cart-plus-minus">
-                                                        <input class="cart-plus-minus-box" value="1" type="text">
-                                                        <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
-                                                        <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
-                                                    </div>
-                                                </td>
-                                                <td class="product-subtotal"><span class="amount">Rp 7.500.000</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="li-product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
-                                                <td class="li-product-thumbnail"><a href="#"><img src="images/product/small-size/6.jpg" alt="Li's Product Image"></a></td>
-                                                <td class="li-product-name"><a href="#">laptop</a></td>
-                                                <td class="li-product-price"><span class="amount">Rp 7.500.000</span></td>
-                                                <td class="quantity">
-                                                    <label>Quantity</label>
-                                                    <div class="cart-plus-minus">
-                                                        <input class="cart-plus-minus-box" value="1" type="text">
-                                                        <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
-                                                        <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
-                                                    </div>
-                                                </td>
-                                                <td class="product-subtotal"><span class="amount">Rp 7.500.000</span></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="coupon-all">
-                                            <div class="coupon">
-                                                <input id="coupon_code" class="input-text" name="coupon_code" value="" placeholder="Coupon code" type="text">
-                                                <input class="button" name="apply_coupon" value="Apply coupon" type="submit">
-                                            </div>
-                                            <div class="coupon2">
-                                                <input class="button" name="update_cart" value="Update cart" type="submit">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-5 ml-auto">
-                                        <div class="cart-page-total">
-                                            <h2>Total Pesanan</h2>
-                                            <ul>
-                                                <li>Subtotal <span>Rp 15.000.000</span></li>
-                                                <li>Diskon <span>Rp 0</span></li>
-                                                <li>Total <span>Rp 15.000.000</span></li>
-                                            </ul>
-                                            <a href="#">Checkout</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+                        <div class="col-lg-12">
+                            <!-- Begin Header Bottom Menu Area -->
+                            <div class="hb-menu">
+                                <nav>
+                                    <ul>
+                                        <li><a href="index.php">Beranda</a></li>
+                                        <li><a href="belanja.php">Belanja</a></li>
+                                        <li><a href="contact.php">Hubungi Kami</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <!-- Header Bottom Menu Area End Here -->
                         </div>
                     </div>
                 </div>
             </div>
-            <!--Shopping Cart Area End-->
-           <!-- Begin Footer Area -->
+            <!-- Header Bottom Area End Here -->
+            <!-- Begin Mobile Menu Area -->
+            <div class="mobile-menu-area d-lg-none d-xl-none col-12">
+                <div class="container">
+                    <div class="row">
+                        <div class="mobile-menu">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile Menu Area End Here -->
+        </header>
+        <!-- Header Area End Here -->
+        <!-- Begin Li's Breadcrumb Area -->
+        <div class="breadcrumb-area">
+            <div class="container">
+                <div class="breadcrumb-content">
+                    <ul>
+                        <li><a href="index.php">Beranda</a></li>
+                        <li class="active">Hubungi Kami</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Li's Breadcrumb Area End Here -->
+        <!-- Begin Contact Main Page Area -->
+        <div class="contact-main-page mt-60 mb-40 mb-md-40 mb-sm-40 mb-xs-40">
+            <div class="container mb-60">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.973730217066!2d111.58744367424643!3d-7.129035169917676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e776411abeabb93%3A0x3ccba806cf9ef497!2sSekolah%20Tinggi%20Teknologi%20Ronggolawe!5e0!3m2!1sen!2sid!4v1746959940264!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 offset-lg-1 col-md-12 order-1 order-lg-2">
+                        <div class="contact-page-side-content">
+                            <h3 class="contact-page-title">IP Store</h3>
+                            <p class="contact-page-message mb-25">
+                               Selamat datang di IP Store, Mitra terpercaya anda dalam dunia teknologi! Menyediakan berbagai produk elektronik terbaru dan berkualitas tinggi, mulai dari smartphone, laptop, tablet, hingga gadget canggih lainnya. Temukan penawaran terbaik dan produk terbaru di IP Store hari ini!
+                            </p>
+                            <div class="single-contact-block">
+                                <h4><i class="fa fa-map-marker"></i> Alamat</h4>
+                                <p>Jl. Kampus Ronggolawe No.01, Mentul, Indah, Komp.Pertamina, Karangboyo, Kec.Cepu, Kab.Blora, Jawa Tengah, Indonesia</p>
+                            </div>
+                            <div class="single-contact-block">
+                                <h4><i class="fa fa-phone"></i> Telepon</h4>
+                                <p><a href="tel:+6281234567890">(+62) 882 2130 1316</a></p>
+                            </div>
+                            <div class="single-contact-block last-child">
+                                <h4><i class="fa fa-envelope-o"></i> Email</h4>
+                                <p><a href="ikaputrirachmawati103@gmail.com">ikaputrirachmawati103@gmail.com</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12 order-2 order-lg-1">
+                        <div class="contact-form-content pt-sm-55 pt-xs-55">
+                            <h3 class="contact-page-title">Kirimkan Pesan Anda</h3>
+                            <div class="contact-form">
+                                <form id="contact-form" action="http://demo.hasthemes.com/limupa-v3/limupa/mail.php" method="post">
+                                    <div class="form-group">
+                                        <label>Nama Anda<span class="required">*</span></label>
+                                        <input type="text" name="customerName" id="customername" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email Anda<span class="required">*</span></label>
+                                        <input type="email" name="customerEmail" id="customerEmail" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Subjek</label>
+                                        <input type="text" name="contactSubject" id="contactSubject">
+                                    </div>
+                                    <div class="form-group mb-30">
+                                        <label>Pesan Anda</label>
+                                        <textarea name="contactMessage" id="contactMessage"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" value="submit" id="submit" class="li-btn-3" name="submit">Kirim</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <p class="form-messege"></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Contact Main Page Area End Here -->
+       <!-- Begin Footer Area -->
         <div class="footer">
             <!-- Begin Footer Static Top Area -->
             <div class="footer-static-top">
@@ -469,7 +384,7 @@ session_start();
                                 <ul class="des">
                                     <li>
                                         <span>Alamat: </span>
-                                        Jl. Menden-Randublatung, Medalem, RT.01/RW.02, Sunggun, Kradenan, Blora , Jawa Tengah, Indonesia
+                                        Jl. Menden-Randublatung, Ds.Medalem, RT.01/RW.02, Dk.Sunggun, Kec.Kradenan, Blora , Jawa Tengah, Indonesia
                                     </li>
                                     <li>
                                         <span>Telepon: </span>
@@ -553,51 +468,248 @@ session_start();
             <!-- Footer Static Bottom Area End Here -->
         </div>
         <!-- Footer Area End Here -->
-        </div>
-        <!-- Body Wrapper End Here -->
-        <!-- jQuery-V1.12.4 -->
-        <script src="js/vendor/jquery-1.12.4.min.js"></script>
-        <!-- Popper js -->
-        <script src="js/vendor/popper.min.js"></script>
-        <!-- Bootstrap V4.1.3 Fremwork js -->
-        <script src="js/bootstrap.min.js"></script>
-        <!-- Ajax Mail js -->
-        <script src="js/ajax-mail.js"></script>
-        <!-- Meanmenu js -->
-        <script src="js/jquery.meanmenu.min.js"></script>
-        <!-- Wow.min js -->
-        <script src="js/wow.min.js"></script>
-        <!-- Slick Carousel js -->
-        <script src="js/slick.min.js"></script>
-        <!-- Owl Carousel-2 js -->
-        <script src="js/owl.carousel.min.js"></script>
-        <!-- Magnific popup js -->
-        <script src="js/jquery.magnific-popup.min.js"></script>
-        <!-- Isotope js -->
-        <script src="js/isotope.pkgd.min.js"></script>
-        <!-- Imagesloaded js -->
-        <script src="js/imagesloaded.pkgd.min.js"></script>
-        <!-- Mixitup js -->
-        <script src="js/jquery.mixitup.min.js"></script>
-        <!-- Countdown -->
-        <script src="js/jquery.countdown.min.js"></script>
-        <!-- Counterup -->
-        <script src="js/jquery.counterup.min.js"></script>
-        <!-- Waypoints -->
-        <script src="js/waypoints.min.js"></script>
-        <!-- Barrating -->
-        <script src="js/jquery.barrating.min.js"></script>
-        <!-- Jquery-ui -->
-        <script src="js/jquery-ui.min.js"></script>
-        <!-- Venobox -->
-        <script src="js/venobox.min.js"></script>
-        <!-- Nice Select js -->
-        <script src="js/jquery.nice-select.min.js"></script>
-        <!-- ScrollUp js -->
-        <script src="js/scrollUp.min.js"></script>
-        <!-- Main/Activator js -->
-        <script src="js/main.js"></script>
-    </body>
+    </div>
+    <!-- Body Wrapper End Here -->
+    <!-- jQuery-V1.12.4 -->
+    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/vendor/popper.min.js"></script>
+    <!-- Bootstrap V4.1.3 Fremwork js -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Ajax Mail js -->
+    <script src="js/ajax-mail.js"></script>
+    <!-- Meanmenu js -->
+    <script src="js/jquery.meanmenu.min.js"></script>
+    <!-- Wow.min js -->
+    <script src="js/wow.min.js"></script>
+    <!-- Slick Carousel js -->
+    <script src="js/slick.min.js"></script>
+    <!-- Owl Carousel-2 js -->
+    <script src="js/owl.carousel.min.js"></script>
+    <!-- Magnific popup js -->
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <!-- Isotope js -->
+    <script src="js/isotope.pkgd.min.js"></script>
+    <!-- Imagesloaded js -->
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <!-- Mixitup js -->
+    <script src="js/jquery.mixitup.min.js"></script>
+    <!-- Countdown -->
+    <script src="js/jquery.countdown.min.js"></script>
+    <!-- Counterup -->
+    <script src="js/jquery.counterup.min.js"></script>
+    <!-- Waypoints -->
+    <script src="js/waypoints.min.js"></script>
+    <!-- Barrating -->
+    <script src="js/jquery.barrating.min.js"></script>
+    <!-- Jquery-ui -->
+    <script src="js/jquery-ui.min.js"></script>
+    <!-- Venobox -->
+    <script src="js/venobox.min.js"></script>
+    <!-- Nice Select js -->
+    <script src="js/jquery.nice-select.min.js"></script>
+    <!-- ScrollUp js -->
+    <script src="js/scrollUp.min.js"></script>
+    <!-- Main/Activator js -->
+    <script src="js/main.js"></script>
+    <!-- Google Map -->
+    <script src="https://maps.google.com/maps/api/js?sensor=false&amp;libraries=geometry&amp;v=3.22&amp;key=AIzaSyChs2QWiAhnzz0a4OEhzqCXwx_qA9ST_lE"></script>
 
-<!-- shopping-cart31:32-->
+    <script>
+        // When the window has finished loading create our google map below
+        google.maps.event.addDomListener(window, 'load', init);
+
+        function init() {
+            // Basic options for a simple Google Map
+            // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+            var mapOptions = {
+                // How zoomed in you want the map to start at (always required)
+                zoom: 12,
+                scrollwheel: false,
+                // The latitude and longitude to center the map (always required)
+                center: new google.maps.LatLng(40.740610, -73.935242), // New York
+                // How you would like to style the map. 
+                // This is where you would paste any style found on
+                styles: [{
+                        "featureType": "water",
+                        "elementType": "geometry",
+                        "stylers": [{
+                                "color": "#e9e9e9"
+                            },
+                            {
+                                "lightness": 17
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape",
+                        "elementType": "geometry",
+                        "stylers": [{
+                                "color": "#f5f5f5"
+                            },
+                            {
+                                "lightness": 20
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry.fill",
+                        "stylers": [{
+                                "color": "#ffffff"
+                            },
+                            {
+                                "lightness": 17
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry.stroke",
+                        "stylers": [{
+                                "color": "#ffffff"
+                            },
+                            {
+                                "lightness": 29
+                            },
+                            {
+                                "weight": 0.2
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "geometry",
+                        "stylers": [{
+                                "color": "#ffffff"
+                            },
+                            {
+                                "lightness": 18
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.local",
+                        "elementType": "geometry",
+                        "stylers": [{
+                                "color": "#ffffff"
+                            },
+                            {
+                                "lightness": 16
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "geometry",
+                        "stylers": [{
+                                "color": "#f5f5f5"
+                            },
+                            {
+                                "lightness": 21
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi.park",
+                        "elementType": "geometry",
+                        "stylers": [{
+                                "color": "#dedede"
+                            },
+                            {
+                                "lightness": 21
+                            }
+                        ]
+                    },
+                    {
+                        "elementType": "labels.text.stroke",
+                        "stylers": [{
+                                "visibility": "on"
+                            },
+                            {
+                                "color": "#ffffff"
+                            },
+                            {
+                                "lightness": 16
+                            }
+                        ]
+                    },
+                    {
+                        "elementType": "labels.text.fill",
+                        "stylers": [{
+                                "saturation": 36
+                            },
+                            {
+                                "color": "#333333"
+                            },
+                            {
+                                "lightness": 40
+                            }
+                        ]
+                    },
+                    {
+                        "elementType": "labels.icon",
+                        "stylers": [{
+                            "visibility": "off"
+                        }]
+                    },
+                    {
+                        "featureType": "transit",
+                        "elementType": "geometry",
+                        "stylers": [{
+                                "color": "#f2f2f2"
+                            },
+                            {
+                                "lightness": 19
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative",
+                        "elementType": "geometry.fill",
+                        "stylers": [{
+                                "color": "#fefefe"
+                            },
+                            {
+                                "lightness": 20
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative",
+                        "elementType": "geometry.stroke",
+                        "stylers": [{
+                                "color": "#fefefe"
+                            },
+                            {
+                                "lightness": 17
+                            },
+                            {
+                                "weight": 1.2
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            // Get the HTML DOM element that will contain your map 
+            // We are using a div with id="map" seen below in the <body>
+            var mapElement = document.getElementById('google-map');
+
+            // Create the Google Map using our element and options defined above
+            var map = new google.maps.Map(mapElement, mapOptions);
+
+            // Let's also add a marker while we're at it
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(40.740610, -73.935242),
+                map: map,
+                title: 'Limupa',
+                animation: google.maps.Animation.BOUNCE
+            });
+        }
+    </script>
+</body>
+
+<!-- contact32:04-->
+
 </html>

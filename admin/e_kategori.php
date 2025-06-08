@@ -123,7 +123,7 @@ if(isset($_POST['simpan'])) {
       </li><!-- End Beranda Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-handbag"></i>
           <span>Kategori</span>
         </a>

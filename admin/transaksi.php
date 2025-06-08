@@ -51,18 +51,16 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
 
 <body>
 
-    <!-- ======= Header ======= -->
+   <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.php" class="logo d-flex align-items-center">
                 <img src="assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block">IP Store</span>
+                <span class="d-none d-lg-block">IP_Store</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
-
-        
 
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
@@ -76,13 +74,12 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="assets/img/putri.jpg" alt="Profile" class="rounded-circle">
-                        <!-- profile-img.jpg diganti dengan foto kalian -->
+                        <img src="assets/img/user.jpg" alt="Profile" class="rounded-circle">
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?></h6>
+                            <h6>Ika Putri</h6>
                             <span>Admin</span>
                         </li>
                         <li>
@@ -93,7 +90,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="logout.php">
+                            <a class="dropdown-item d-flex align-items-center" href="#">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Sign Out</span>
                             </a>
@@ -259,7 +256,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
                                             echo "<td>Rp " . number_format($row["total"], 0, ",", ".") . "</td>";
                                             echo "<td>Rp " . number_format($row["diskon"], 0, ",", ".") . "</td>";
                                             echo "<td>
-                                            <a href='detail_jual.php?id=" . $row["id_jual"] . "'class='btn btn-info btn-sm'>Detail</a></td>";
+                                            <a href='detail-jual.php?id=" . $row["id_jual"] . "'class='btn btn-info btn-sm'>Detail</a></td>";
                                             echo "</tr>";
                                         }
                                     } else {

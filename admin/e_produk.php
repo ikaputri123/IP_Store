@@ -164,7 +164,7 @@ WHERE id_produk = '$id_produk'");
             </li><!-- End Kategori Produk Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="produk.php">
+                <a class="nav-link" href="produk.php">
                     <i class="bi bi-box-seam-fill"></i>
                     <span>Produk</span>
                 </a>
@@ -191,7 +191,7 @@ WHERE id_produk = '$id_produk'");
                 </a>
             </li><!-- End Laporan Page Nav -->
             <li class="nav-item">
-                <a class="nav-link" href="pengguna.php">
+                <a class="nav-link collapsed" href="pengguna.php">
                     <i class="bi bi-person-fill"></i>
                     <span>Pengguna</span>
                 </a>

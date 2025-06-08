@@ -49,18 +49,16 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
 
 <body>
 
-    <!-- ======= Header ======= -->
+     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.php" class="logo d-flex align-items-center">
-                <img src="assets/img/logo2.png" alt="">
-                <span class="d-none d-lg-block">IP Store</span>
+                <img src="assets/img/logo.png" alt="">
+                <span class="d-none d-lg-block">IP_Store</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
-
-        
 
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
@@ -74,14 +72,12 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="assets/img/putri.jpg" alt="Profile" class="rounded-circle">
-                        <span class="d-none d-md-block dropdown-toggle ps-2">IkaPutri</span>
-                        <!-- profile-img.jpg diganti dengan foto kalian -->
-                    </a><!-- End Profile Image Icon -->
+                        <img src="assets/img/user.jpg" alt="Profile" class="rounded-circle">
+                    </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?></h6>
+                            <h6>Ika Putri</h6>
                             <span>Admin</span>
                         </li>
                         <li>
@@ -92,7 +88,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
                         </li>
 
                         <li>
-                        <a class="dropdown-item d-flex align-items-center" href="logout.php">
+                            <a class="dropdown-item d-flex align-items-center" href="#">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Sign Out</span>
                             </a>
@@ -154,7 +150,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
             </li><!-- End Laporan Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="penguuna.php">
+                <a class="nav-link collapsed" href="pengguna.php">
                     <i class="bi bi-person-fill"></i>
                     <span>Pengguna</span>
                 </a>
