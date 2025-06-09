@@ -57,7 +57,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.php" class="logo d-flex align-items-center">
                 <img src="assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block">IP Store</span>
+                <span class="d-none d-lg-block">IP_Store</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
@@ -75,12 +75,11 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                         <img src="assets/img/user.jpg" alt="Profile" class="rounded-circle">
-                        <!-- profile-img.jpg diganti dengan foto kalian -->
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>IkaPutri</h6>
+                            <h6>Ika Putri</h6>
                             <span>Admin</span>
                         </li>
                         <li>
@@ -111,7 +110,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link " href="index.php">
+                <a class="nav-link  collapsed" href="index.php">
                     <i class="bi bi-house-door"></i>
                     <span>Beranda</span>
                 </a>
@@ -139,7 +138,7 @@ if (!isset($_SESSION["status"]) || $_SESSION["status"] !== "admin") {
             </li><!-- End Keranjang Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="transaksi.php">
+                <a class="nav-link" href="transaksi.php">
                     <i class="bi bi-credit-card"></i>
                     <span>Transaksi</span>
                 </a>
