@@ -715,23 +715,8 @@ session_start();
                                 <div class="footer-block">
                                     <h3 class="footer-block-title">Ikuti Kami</h3>
                                     <ul class="social-link">
-                                        <li class="twitter">
-                                            <a href="https://twitter.com/" data-toggle="tooltip" target="_blank" title="Twitter">
-                                                <i class="fa fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="facebook">
-                                            <a href="https://www.facebook.com/" data-toggle="tooltip" target="_blank" title="Facebook">
-                                                <i class="fa fa-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="youtube">
-                                            <a href="https://www.youtube.com/" data-toggle="tooltip" target="_blank" title="Youtube">
-                                                <i class="fa fa-youtube"></i>
-                                            </a>
-                                        </li>
                                         <li class="instagram">
-                                            <a href="https://www.instagram.com/" data-toggle="tooltip" target="_blank" title="Instagram">
+                                            <a href="https://instagram.com/ya.putri_/" data-toggle="tooltip" target="_blank" title="Instagram">
                                                 <i class="fa fa-instagram"></i>
                                             </a>
                                         </li>
@@ -807,7 +792,7 @@ session_start();
                                         <div class="single-add-to-cart">
                                             <form action="tambah-ke-keranjang.php" method="POST" class="cart-quantity">
                                                 <input type="hidden" name="id_produk" id="input-id-produk">
-                                                <input type="hidden" name="id_user" value="<?= $_SESSION['id_user'] ?>">
+                                                <input type="hidden" name="id_user" value="<?= isset($_SESSION['id_user']) ?>">
                                                 <input type="hidden" name="harga" id="input-harga">
                                                 <input type="hidden" name="redirect_url" value="belanja.php">
 
@@ -827,9 +812,7 @@ session_start();
                                         <div class="product-additional-info pt-25">
                                             <div class="product-social-sharing pt-25">
                                                 <ul>
-                                                    <li class="facebook"><a href="#"><i class="fa fa-facebook"></i>Facebook</a></li>
-                                                    <li class="twitter"><a href="#"><i class="fa fa-twitter"></i>Twitter</a></li>
-                                                    <li class="instagram"><a href="#"><i class="fa fa-instagram"></i>Instagram</a></li>
+                                                    <li class="instagram"><a href="https://instagram.com/ya.putri_/"><i class="fa fa-instagram"></i>Instagram</a></li>
                                                 </ul>
                                             </div>
                                         </div>

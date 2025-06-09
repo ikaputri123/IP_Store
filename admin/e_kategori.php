@@ -121,42 +121,42 @@ if(isset($_POST['simpan'])) {
       </li><!-- End Beranda Nav -->
 
       <li class="nav-item">
-        <a class="nav-link" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link" href="kategori.php">
           <i class="bi bi-handbag"></i>
           <span>Kategori</span>
         </a>
       </li><!-- End Kategori Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" href="produk.php">
           <i class="bi bi-box-seam-fill"></i>
           <span>Produk</span>
         </a>
       </li><!-- End Produk Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" href="keranjang.php">
           <i class="bi bi-cart4"></i>
           <span>Keranjang</span>
         </a>
       </li><!-- End Keranjang Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" href="transaksi.php">
           <i class="bi bi-credit-card"></i>
           <span>Transaksi</span>
         </a>
       </li><!-- End Transaksi Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" href="laporan.php">
           <i class="bi bi-journal-text"></i>
           <span>Laporan</span>
         </a>
       </li><!-- End Laporan Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
+        <a class="nav-link collapsed" href="pengguna.php">
           <i class="bi bi-person-fill"></i>
           <span>Pengguna</span>
         </a>

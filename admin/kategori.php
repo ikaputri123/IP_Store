@@ -40,11 +40,11 @@
 
 <body>
 
-    <!-- ======= Header ======= -->
+     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
-            <a href="index.html" class="logo d-flex align-items-center">
+            <a href="index.php" class="logo d-flex align-items-center">
                 <img src="assets/img/logo.png" alt="">
                 <span class="d-none d-lg-block">IP_Store</span>
             </a>
@@ -53,11 +53,11 @@
 
         <div class="search-bar">
             <form class="search-form d-flex align-items-center" method="POST" action="">
-                <input type="text" name="query" placeholder="Search" title="Enter search keyword" value="<?php echo isset
-                ($_POST['query']) ? ($_POST['query']) : ''; ?>">
+                <input type="text" name="query" placeholder="Search" title="Enter search keyword" value="<?php echo isset($_POST['query']) ? htmlspecialchars($_POST['query']) : ''; ?>">
                 <button type="submit" title="Search"><i class="bi bi-search"></i></button>
             </form>
         </div><!-- End Search Bar -->
+
 
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
@@ -75,7 +75,7 @@
                      </a><!-- End Profile Iamge Icon -->
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?></h6>
+                            <h6><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Ipstore'; ?></h6>
                             <span>Admin</span>
                         </li>
                         <li>

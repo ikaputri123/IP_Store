@@ -268,7 +268,7 @@ session_start();
                                 <div class="single-add-to-cart">
                                     <form action="tambah-ke-keranjang.php" method="POST" class="cart-quantity">
                                         <input type="hidden" name="id_produk" value="<?= $data['id_produk'] ?>">
-                                        <input type="hidden" name="id_user" value="<?= $_SESSION['id_user'] ?>">
+                                        <input type="hidden" name="id_user" value="<?= isset($_SESSION['id_user']) ?>">
                                         <input type="hidden" name="harga" value="<?= $data['harga'] ?>">
                                         <input type="hidden" name="redirect_url" value="<?= $_SERVER['REQUEST_URI'] ?>">
                                         <div class="quantity">
@@ -286,9 +286,7 @@ session_start();
                                 <div class="product-additional-info pt-25">
                                     <div class="product-social-sharing pt-25">
                                         <ul>
-                                            <li class="facebook"><a href="#"><i class="fa fa-facebook"></i>Facebook</a></li>
-                                            <li class="twitter"><a href="#"><i class="fa fa-twitter"></i>Twitter</a></li>
-                                            <li class="instagram"><a href="#"><i class="fa fa-instagram"></i>Instagram</a></li>
+                                            <li class="instagram"><a href="https://instagram.com/ya.putri_/"><i class="fa fa-instagram"></i>Instagram</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -369,12 +367,7 @@ session_start();
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
                                                         <li class="add-cart active">
-                                                            <a href="detail_produk.php?id_produk=<?= $p['id_produk'] ?>">Beli Sekarang</a>
-                                                        <li>
-                                                            <a href="detail_produk.php?id_produk=<?= $p['id_produk'] ?>" title="Quick View" class="quick-view-btn">
-                                                                <i class="fa fa-eye"></i>
-                                                            </a>
-                                                        </li>
+                                                            <a href="detail_produk.php?id=<?= $p['id_produk'] ?>">Beli Sekarang</a>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -390,7 +383,7 @@ session_start();
             </div>
         </section>
         <!-- Li's Laptop Product Area End Here -->
-        <!-- Begin Footer Area -->
+         <!-- Begin Footer Area -->
         <div class="footer">
             <!-- Begin Footer Static Top Area -->
             <div class="footer-static-top">
@@ -505,192 +498,8 @@ session_start();
                                 <div class="footer-block">
                                     <h3 class="footer-block-title">Ikuti Kami</h3>
                                     <ul class="social-link">
-                                        <li class="twitter">
-                                            <a href="https://twitter.com/" data-toggle="tooltip" target="_blank" title="Twitter">
-                                                <i class="fa fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="facebook">
-                                            <a href="https://www.facebook.com/" data-toggle="tooltip" target="_blank" title="Facebook">
-                                                <i class="fa fa-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="youtube">
-                                            <a href="https://www.youtube.com/" data-toggle="tooltip" target="_blank" title="Youtube">
-                                                <i class="fa fa-youtube"></i>
-                                            </a>
-                                        </li>
                                         <li class="instagram">
-                                            <a href="https://www.instagram.com/" data-toggle="tooltip" target="_blank" title="Instagram">
-                                                <i class="fa fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- Begin Footer Newsletter Area -->
-                                <!-- Footer Newsletter Area End Here -->
-                            </div>
-                            <!-- Footer Block Area End Here -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Footer Static Middle Area End Here -->
-            <!-- Begin Footer Static Bottom Area -->
-            <div class="footer-static-bottom pt-55 pb-55">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <!-- Begin Footer Payment Area -->
-                            <div class="copyright text-center">
-                                <a href="#">
-                                    <img src="images/payment/1.png" alt="">
-                                </a>
-                            </div>
-                            <!-- Footer Payment Area End Here -->
-                            <!-- Begin Copyright Area -->
-                            <div class="copyright text-center pt-25">
-                                <span><a target="_blank" href="https://www.instagram.com/ya.putri_?igsh=azk4dHlwYmNpZGs=">Designed by: Ika Putri Rachmawati</a></span>
-                            </div>
-                            <!-- Copyright Area End Here -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Footer Static Bottom Area End Here -->
-        </div>
-        <!-- Footer Area End Here --><!-- Begin Footer Area -->
-        <div class="footer">
-            <!-- Begin Footer Static Top Area -->
-            <div class="footer-static-top">
-                <div class="container">
-                    <!-- Begin Footer Shipping Area -->
-                    <div class="footer-shipping pt-60 pb-55 pb-xs-25">
-                        <div class="row">
-                            <!-- Mulai Area Kotak Pengiriman Li -->
-                            <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
-                                <div class="li-shipping-inner-box">
-                                    <div class="shipping-icon">
-                                        <img src="images/shipping-icon/1.png" alt="Ikon Pengiriman">
-                                    </div>
-                                    <div class="shipping-text">
-                                        <h2>Pengiriman Gratis</h2>
-                                        <p>Dan pengembalian gratis. Lihat di halaman checkout untuk tanggal pengiriman.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Akhir Area Kotak Pengiriman Li -->
-
-                            <!-- Mulai Area Kotak Pengiriman Li -->
-                            <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
-                                <div class="li-shipping-inner-box">
-                                    <div class="shipping-icon">
-                                        <img src="images/shipping-icon/2.png" alt="Ikon Pengiriman">
-                                    </div>
-                                    <div class="shipping-text">
-                                        <h2>Pembayaran Aman</h2>
-                                        <p>Bayar dengan metode pembayaran paling populer dan aman di dunia.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Akhir Area Kotak Pengiriman Li -->
-
-                            <!-- Mulai Area Kotak Pengiriman Li -->
-                            <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
-                                <div class="li-shipping-inner-box">
-                                    <div class="shipping-icon">
-                                        <img src="images/shipping-icon/3.png" alt="Ikon Pengiriman">
-                                    </div>
-                                    <div class="shipping-text">
-                                        <h2>Belanja dengan Percaya Diri</h2>
-                                        <p Per>Perlindungan Pembeli kami melindungi pembelian Anda dari klik hingga pengiriman.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Akhir Area Kotak Pengiriman Li -->
-
-                            <!-- Mulai Area Kotak Pengiriman Li -->
-                            <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
-                                <div class="li-shipping-inner-box">
-                                    <div class="shipping-icon">
-                                        <img src="images/shipping-icon/4.png" alt="Ikon Pengiriman">
-                                    </div>
-                                    <div class="shipping-text">
-                                        <h2>Pusat Bantuan 24/7</h2>
-                                        <p>Punya pertanyaan? Hubungi Spesialis kami atau chat secara online.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Akhir Area Kotak Pengiriman Li -->
-                        </div>
-                    </div>
-
-                    <!-- Footer Shipping Area End Here -->
-                </div>
-            </div>
-            <!-- Footer Static Top Area End Here -->
-            <!-- Begin Footer Static Middle Area -->
-            <div class="footer-static-middle">
-                <div class="container">
-                    <div class="footer-logo-wrap pt-50 pb-35">
-                        <div class="row">
-                            <!-- Begin Footer Logo Area -->
-                            <div class="col-lg-4 col-md-6">
-                                <div class="footer-logo">
-                                    <h1>IP_Store</h1>
-                                    <p class="info">
-                                        Selamat datang di IP Store, Mitra terpercaya anda dalam dunia teknologi! Menyediakan berbagai produk elektronik terbaru dan berkualitas tinggi, mulai dari smartphone, laptop, tablet, hingga gadget canggih lainnya. Temukan penawaran terbaik dan produk terbaru di IP Store hari ini!
-                                    </p>
-                                </div>
-                                <ul class="des">
-                                    <li>
-                                        <span>Alamat: </span>
-                                        Jl. Menden-Randublatung, Medalem, RT.01/RW.02, Sunggun, Kradenan, Blora , Jawa Tengah, Indonesia
-                                    </li>
-                                    <li>
-                                        <span>Telepon: </span>
-                                        <a href="#">(+62) 88221301316</a>
-                                    </li>
-                                    <li>
-                                        <span>Email: </span>
-                                        <a href="mailto:ikaputrirachmawati103@gmail.com">ikaputrirachmawati103@gmail.com</a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <!-- Footer Logo Area End Here -->
-                            <!-- Begin Footer Block Area -->
-                            <div class="col-lg-2 col-md-3 col-sm-6">
-
-                            </div>
-                            <!-- Footer Block Area End Here -->
-                            <!-- Begin Footer Block Area -->
-                            <div class="col-lg-2 col-md-3 col-sm-6">
-
-                            </div>
-                            <!-- Footer Block Area End Here -->
-                            <!-- Begin Footer Block Area -->
-                            <div class="col-lg-4">
-                                <div class="footer-block">
-                                    <h3 class="footer-block-title">Ikuti Kami</h3>
-                                    <ul class="social-link">
-                                        <li class="twitter">
-                                            <a href="https://twitter.com/" data-toggle="tooltip" target="_blank" title="Twitter">
-                                                <i class="fa fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="facebook">
-                                            <a href="https://www.facebook.com/" data-toggle="tooltip" target="_blank" title="Facebook">
-                                                <i class="fa fa-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="youtube">
-                                            <a href="https://www.youtube.com/" data-toggle="tooltip" target="_blank" title="Youtube">
-                                                <i class="fa fa-youtube"></i>
-                                            </a>
-                                        </li>
-                                        <li class="instagram">
-                                            <a href="https://www.instagram.com/" data-toggle="tooltip" target="_blank" title="Instagram">
+                                            <a href="https://instagram.com/ya.putri_/" data-toggle="tooltip" target="_blank" title="Instagram">
                                                 <i class="fa fa-instagram"></i>
                                             </a>
                                         </li>
