@@ -745,7 +745,7 @@ session_start();
                             <!-- Footer Payment Area End Here -->
                             <!-- Begin Copyright Area -->
                             <div class="copyright text-center pt-25">
-                                <span><a target="_blank" href="https://www.instagram.com/ya.putri_?igsh=azk4dHlwYmNpZGs=">Designed by: Ika Putri Rachmawati</a></span>
+                                <span><a target="_blank" href="https://instagram.com/ya.putri_/">Designed by: Ika Putri Rachmawati</a></span>
                             </div>
                             <!-- Copyright Area End Here -->
                         </div>

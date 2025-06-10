@@ -8,7 +8,7 @@ if (!isset($_SESSION['id_user'])) {
 }
 
 $id_produk = $_POST['id_produk'];
-$id_user   = $_POST['id_user'];
+$id_user = $_SESSION['id_user'];
 $jumlah    = (int) $_POST['jumlah'];
 $harga     = (int) $_POST['harga'];
 $redirect  = isset($_POST['redirect_url']) ? $_POST['redirect_url'] : 'belanja.php'; // 🟢 Tambahkan ini
@@ -34,8 +34,8 @@ if ($data && $data['stok'] >= $jumlah) {
     $id_pesanan = 'M' . str_pad($newId, 3, '0', STR_PAD_LEFT); // format jadi M001, M002, dst
 
     // Simpan ke tb_pesanan
-    $insert = mysqli_query($koneksi, "INSERT INTO tb_pesanan (id_pesanan, id_produk, qty, total, id_user) VALUES (
-        '$id_pesanan', '$id_produk', $jumlah, $total, '$id_user')");
+$insert = mysqli_query($koneksi, "INSERT INTO tb_pesanan (id_pesanan, id_produk, qty, total, id_user) 
+VALUES ('$id_pesanan', '$id_produk', $jumlah, $total, '$id_user')");
 
     if ($insert) {
         // Kurangi stok

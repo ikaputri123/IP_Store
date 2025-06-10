@@ -280,19 +280,18 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== 'admin') {
     </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->
-    <footer id="footer" class="footer">
-        <div class="copyright">
-            &copy; Copyright <strong><span>IP_Store</span></strong>. All Rights Reserved
-        </div>
-        <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-            Designed by <a href="https://www.instagram.com/ya.putri_?igsh=azk4dHlwYmNpZGs="
-                target="_blank">IkaPutri</a>
-        </div>
-    </footer><!-- End Footer -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>IP_Store</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+      Designed by <a href="https://instagram.com/ya.putri_/" target="_blank">IkaPutriRachmawati</a>
+    </div>
+  </footer><!-- End Footer -->
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

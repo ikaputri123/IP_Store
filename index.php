@@ -67,7 +67,7 @@ session_start();
                         <div class="col-lg-3">
                             <div class="logo pb-sm-30 pb-xs-30">
                                 <a href="index.php">
-                                    <h1>IP Store</h1>
+                                    <h1>IP_Store</h1>
                                 </a>
                             </div>
                         </div>
@@ -552,7 +552,7 @@ session_start();
                             <!-- Footer Payment Area End Here -->
                             <!-- Begin Copyright Area -->
                             <div class="copyright text-center pt-25">
-                                <span><a target="_blank" href="https://www.instagram.com/ya.putri_?igsh=azk4dHlwYmNpZGs=">Designed by: Ika Putri Rachmawati</a></span>
+                                <span><a target="_blank" href="https://instagram.com/ya.putri_/">Designed by: Ika Putri Rachmawati</a></span>
                             </div>
                             <!-- Copyright Area End Here -->
                         </div>

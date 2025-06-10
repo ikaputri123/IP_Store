@@ -60,7 +60,7 @@
                      </a><!-- End Profile Iamge Icon -->
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Ipstore'; ?></h6>
+                            <h6><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'ipstore'; ?></h6>
                             <span>Admin</span>
                         </li>
                         <li>
@@ -266,7 +266,7 @@
     <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span>ip_storeAdmin</span></strong>. All Rights Reserved
+      &copy; Copyright <strong><span>IP_Store</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
       <!-- All the links in the footer should remain intact. -->

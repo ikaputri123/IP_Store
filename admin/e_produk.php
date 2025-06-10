@@ -52,7 +52,7 @@ if (isset($_POST['update'])) {
     } else {
         echo "<script>alert('Gagal mengupdate data produk!')</script>";
         header("refresh:0, produk.php");
-}
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -89,7 +89,7 @@ if (isset($_POST['update'])) {
 
 <body>
 
-     <!-- ======= Header ======= -->
+    <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
@@ -120,10 +120,10 @@ if (isset($_POST['update'])) {
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                         <img src="assets/img/user.jpg" alt="Profile" class="rounded-circle">
-                     </a><!-- End Profile Iamge Icon -->
+                    </a><!-- End Profile Iamge Icon -->
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?></h6>
+                            <h6><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'ipstore'; ?></h6>
                             <span>Admin</span>
                         </li>
                         <li>
@@ -148,7 +148,7 @@ if (isset($_POST['update'])) {
 
     </header><!-- End Header -->
 
-     <!-- ======= Sidebar ======= -->
+    <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
 
         <ul class="sidebar-nav" id="sidebar-nav">
@@ -205,7 +205,7 @@ if (isset($_POST['update'])) {
 
     </aside><!-- End Sidebar-->
 
-     <main id="main" class="main">
+    <main id="main" class="main">
 
         <div class="pagetitle">
             <h1>Produk</h1>
@@ -257,8 +257,9 @@ if (isset($_POST['update'])) {
                                 <div class="col-12">
                                     <label for="gambar" class="form-label">Gambar Produk</label>
                                     <input type="file" class="form-control" id="gambar" name="gambar" accept="image/*">
-                                    <br>
-                                   
+                                    <?php if (!empty($data['gambar'])): ?>
+                                        <img src="produk_img/<?php echo $data['gambar']; ?>" alt="Gambar Produk" style="max-width: 200px; margin-top: 10px;">
+                                    <?php endif; ?>
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary" name="update">Update</button>
@@ -274,20 +275,19 @@ if (isset($_POST['update'])) {
     </main><!-- End #main -->
 
 
-    <!-- ======= Footer ======= -->
-    <footer id="footer" class="footer">
-        <div class="copyright">
-            &copy; Copyright <strong><span>IP_Store</span></strong>. All Rights Reserved
-        </div>
-        <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-            Designed by <a href="https://www.instagram.com/ya.putri_?igsh=azk4dHlwYmNpZGs="
-                target="_blank">IkaPutri</a>
-        </div>
-    </footer><!-- End Footer -->
+     <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>IP_Store</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+      Designed by <a href="https://instagram.com/ya.putri_/" target="_blank">IkaPutriRachmawati</a>
+    </div>
+  </footer><!-- End Footer -->
 
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

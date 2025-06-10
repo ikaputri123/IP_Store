@@ -84,7 +84,7 @@ if (isset($_POST['simpan'])) {
        </a><!-- End Profile Iamge Icon -->
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'Guest'; ?></h6>
+                            <h6><?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : 'ipstore'; ?></h6>
                             <span>Admin</span>
                         </li>
                         <li>
@@ -122,7 +122,7 @@ if (isset($_POST['simpan'])) {
 <li class="nav-item">
   <a class="nav-link" href="kategori.php">
   <i class="bi bi-box-seam"></i>
-    <span>Kategori Produk</span>
+    <span>Kategori</span>
   </a>
 </li><!-- End Profile Page Nav -->
 
@@ -166,11 +166,11 @@ if (isset($_POST['simpan'])) {
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Kategori Produk</h1>
+      <h1>Kategori</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.php">Beranda</a></li>
-          <li class="breadcrumb-item">Kategori Produk</li>
+          <li class="breadcrumb-item">Kategori</li>
           <li class="breadcrumb-item active">Tambah</li>
         </ol>
       </nav>
@@ -211,8 +211,7 @@ if (isset($_POST['simpan'])) {
       <!-- You can delete the links only if you purchased the pro version. -->
       <!-- Licensing information: https://bootstrapmade.com/license/ -->
       <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://www.instagram.com/ya.putri_?igsh=azk4dHlwYmNpZGs="
-      target="_blank">IkaPutri</a>
+      Designed by <a href="https://instagram.com/ya.putri_/" target="_blank">IkaPutriRachmawati</a>
     </div>
   </footer><!-- End Footer -->
 

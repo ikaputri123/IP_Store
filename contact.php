@@ -234,7 +234,7 @@ session_start();
                             </p>
                             <div class="single-contact-block">
                                 <h4><i class="fa fa-map-marker"></i> Alamat</h4>
-                                <p>Jl. Kampus Ronggolawe No.01, Mentul, Indah, Komp.Pertamina, Karangboyo, Kec.Cepu, Kab.Blora, Jawa Tengah, Indonesia</p>
+                                <p>Jl. Menden-Randublatung, Ds.Medalem, RT.01/RW.02, Dk.Sunggun, Kec.Kradenan, Blora , Jawa Tengah, Indonesia</p>
                             </div>
                             <div class="single-contact-block">
                                 <h4><i class="fa fa-phone"></i> Telepon</h4>
@@ -426,7 +426,7 @@ session_start();
                             <!-- Footer Payment Area End Here -->
                             <!-- Begin Copyright Area -->
                             <div class="copyright text-center pt-25">
-                                <span><a target="_blank" href="https://www.instagram.com/ya.putri_?igsh=azk4dHlwYmNpZGs=">Designed by: Ika Putri Rachmawati</a></span>
+                                <span><a target="_blank" href="https://instagram.com/ya.putri_/">Designed by: Ika Putri Rachmawati</a></span>
                             </div>
                             <!-- Copyright Area End Here -->
                         </div>
